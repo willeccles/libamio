@@ -69,6 +69,9 @@ The output from the build can be found in `libhwio/build/bin/lib`.
 
 ## Documentation
 
+**If you don't want to generate documentation yourself, it's hosted online
+[here](https://willeccles.github.io/libhwio).**
+
 If you have Doxygen installed, you can generate documentation using `make docs`
 in the build directory. These will be generated in the `libhwio/docs/html`
 directory. Simply open `index.html` and you will be in business. If you don't
