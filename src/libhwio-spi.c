@@ -13,14 +13,21 @@
 
 typedef struct {
     int fd;
+    int bus;
+    int cs;
 } spidevice;
 
 SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
+    if (bus < 0 || cs < 0) return NULL;
+
     spidevice* dev = (spidevice*)malloc(sizeof(spidevice));
     if (dev = NULL) return NULL;
 
-    char devpath[45];
-    sprintf(devpath, "/dev/spidev%d.%d", bus, cs);
+    dev->bus = bus;
+    dev->cs = cs;
+
+    char devpath[35];
+    snprintf(devpath, 35 "/dev/spidev%d.%d", dev->bus, dev->cs);
 
     if (EXIT_SUCCESS != access(devpath, F_OK)) {
         free(dev);

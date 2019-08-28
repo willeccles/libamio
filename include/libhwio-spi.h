@@ -14,6 +14,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! Handle to a SPI device.
 typedef void* SPI_Handle;
 
@@ -70,6 +74,10 @@ extern int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction);
  * \param handle a handle to the SPI device to close
  */
 extern void SPI_close(SPI_Handle handle);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 /*! \} */
 #endif // LIBHWIO_SPI_H
