@@ -1,5 +1,5 @@
-# ABS Controller CMakeLists
-# This is used to build the ABS Controller software for use on the target.
+# LibHWIO CMakeLists
+# This is used to build the hwio library for ARM targets.
 # Make sure you have the TI linux-rt SDK installed - this will be used to
 # get the right compiler commands and includes for the ARM target.
 cmake_minimum_required (VERSION 3.13)
@@ -9,9 +9,9 @@ cmake_minimum_required (VERSION 3.13)
 include(GNUInstallDirs)
 
 # use -DCMAKE_BUILD_TYPE=Debug or =Release at the command line to change build types
-# (this defaults to debug)
+# (this defaults to Release)
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+    set(CMAKE_BUILD_TYPE Release)
 endif()
 
 # various build flags
@@ -47,7 +47,7 @@ endif()
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/arm-toolchain.cmake)
 
 # this has to come after the CMAKE_TOOLCHAIN_FILE above
-project (ABSController VERSION 0.0.1 DESCRIPTION "ABS firmware ported to linuxrt")
+project (LibHWIO VERSION 0.0.1 DESCRIPTION "Library for AM335x SoC IO.")
 
 # print info about our parameters
 MESSAGE("CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
@@ -59,7 +59,7 @@ else()
 endif()
 MESSAGE("TI_SDK_DIR: ${TI_SDK_DIR}")
 
-# tell cmake to use a 'bin' directory to output binaries
+# tell cmake to use a 'bin' directory to output binaries and libraries
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)

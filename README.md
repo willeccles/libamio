@@ -10,6 +10,14 @@ This library has the goals of being:
 This library is particularly aimed at the AM335x-based SoCs, such as the
 OSD-335x and the BeagleBone Black.
 
+## Prebuilt Libraries
+
+There may or may not be releases available on GitHub on the Releases tab. These
+would be pre-compiled static libraries for ARM targets. These would be ready to
+compile into executables. Their release pages would also include the header
+files corresponding to their versions in order to keep consistency in case of
+updates to the interfaces.
+
 ## Requirements
 
 This library is probably not a particularly good one if you are a hobbyist - it
@@ -57,6 +65,8 @@ above, you can just run `make`. This will compile a *static* library, because
 this avoids copying shared libs to an ARM target or having to compile it on
 there as well.
 
+The output from the build can be found in `libhwio/build/bin/lib`.
+
 ## Documentation
 
 If you have Doxygen installed, you can generate documentation using `make docs`
@@ -64,3 +74,11 @@ in the build directory. These will be generated in the `libhwio/docs/html`
 directory. Simply open `index.html` and you will be in business. If you don't
 have Doxygen installed, use your preferred package manager to install Doxygen
 and Graphviz.
+
+## Library Credits
+
+The libraries included in the `lib` directory are not made by me, nor owned by
+me. They are copied from an ARM target in order to keep library versions
+consistent and controlled. This is important for the project it was required
+for. I do not own them, nor do I take any responsiblity for anything related to
+them. All credit for those libraries goes to their respective owners.
