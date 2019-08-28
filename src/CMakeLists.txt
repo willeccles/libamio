@@ -10,7 +10,6 @@ list(APPEND LIB_SOURCES
     ${CMAKE_CURRENT_LIST_DIR}/libcwio-gpio.c
     ${CMAKE_CURRENT_LIST_DIR}/libcwio-i2c.c
     ${CMAKE_CURRENT_LIST_DIR}/libcwio-spi.c
-    ${CMAKE_CURRENT_LIST_DIR}/libcwio-types.c
     ${CMAKE_CURRENT_LIST_DIR}/libcwio-uart.c
 )
 
