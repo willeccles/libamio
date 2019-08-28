@@ -20,8 +20,7 @@ typedef struct {
 // timeout should be in 10s of milliseconds, i.e. 2 = 20ms
 static int set_timeout(i2cdevice* dev, int timeout);
 
-static int i2c_read(i2cdevice* dev, uint8_t* buf, uint16_t len);
-static int i2c_write(i2cdevice* dev, uint8_t* buf, uint16_t len);
+static int i2c_rdwr(i2cdevice* dev, i2c_msg* message);
 
 I2C_Handle I2C_open(uint8_t devnum) {
     i2cdevice* dev = (i2cdevice*)malloc(sizeof(i2cdevice));
@@ -70,6 +69,40 @@ int I2C_transfer(I2C_Handle handle, I2C_Transaction* transaction) {
         return EXIT_FAILURE
     }
 
+    // set timeout
+    if (EXIT_SUCCESS != set_timeout(dev, transaction->timeout / 10)) {
+        return EXIT_FAILURE;
+    }
+
+    struct i2c_msg msg;
+
+    // start by sending data if necessary
+    if (transaction->writeCount) {
+        msg = (struct i2c_msg){
+            .addr = transaction->slaveAddress >> 1,
+            .flags = 0,
+            .len = transaction->writeCount,
+            .buf = transaction->writeBuf,
+        };
+
+        if (EXIT_FAILURE == i2c_rdwr(dev, &msg)) {
+            return EXIT_FAILURE;
+        }
+    }
+
+    if (transaction->readCount) {
+        msg = (struct i2c_msg){
+            .addr = transaction->slaveAddress >> 1,
+            .flags = I2C_M_RD,
+            .len = transaction->readCount,
+            .buf = transaction->readBuf,
+        };
+
+        if (EXIT_FAILURE == i2c_rdwr(dev, &msg)) {
+            return EXIT_FAILURE;
+        }
+    }
+
     return EXIT_SUCCESS;
 }
 
@@ -96,10 +129,20 @@ static int set_timeout(i2cdevice* dev, int timeout) {
     return EXIT_SUCCESS;
 }
 
-static int i2c_read(i2cdevice* dev, uint8_t* buf, uint16_t len) {
-    return EXIT_SUCCESS;
-}
+static int i2c_rdwr(i2cdevice* dev, i2c_msg* message) {
+    if (dev == NULL || message == NULL) {
+        return EXIT_FAILURE;
+    }
 
-static int i2c_write(i2cdevice* dev, uint8_t* buf, uint16_t len) {
+    struct i2c_rdwr_ioctl_data packets = (struct i2c_rdwr_ioctl_data){
+        // this is a bit abusive; it's expecting an array of n messages
+        .msgs = message,
+        .nmsgs = 1,
+    };
+
+    if (ioctl(dev->fd, I2C_RDWR, &packets) < 0) {
+        return EXIT_FAILURE;
+    }
+
     return EXIT_SUCCESS;
 }
