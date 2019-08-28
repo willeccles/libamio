@@ -1,3 +1,18 @@
+/*!
+ * \file libhwio-spi.h
+ * \author Will Eccles
+ * \date 2019-08-28
+ * \brief Defines SPI-related structures and data types.
+ *
+ * \defgroup LIBHWIOSPI SPI
+ * SPI-related structures, data-types, and functions.
+ * \{
+ */
+
+#ifndef LIBHWIO_SPI_H
+#define LIBHWIO_SPI_H
+
+#include <stdint.h>
 
 //! Handle to a SPI device.
 typedef void* SPI_Handle;
@@ -14,10 +29,13 @@ typedef enum SPI_MODE {
 
 /*!
  * \brief Wrapper SPI transaction struct.
+ * \note Both #txBuf and #rxBuf need to be non-NULL and should have the same
+ * length, which should be less than or equal to #count.
  */
 typedef struct SPI_Transaction {
-    uint32_t count; //!< Number of bytes to transmit+receive
-    uint8_t *rxBuf; //!< Buffer into which data should be written
+    int      count; //!< Number of bytes to transmit+receive
+    uint8_t *rxBuf; //!< Buffer into which data should be written (NULL if you
+                    //!< wish to only send but not receive)
     uint8_t *txBuf; //!< Buffer from which to transmit data
 } SPI_Transaction;
 
@@ -25,15 +43,10 @@ typedef struct SPI_Transaction {
  * \brief Wrapper SPI params struct.
  */
 typedef struct SPI_Params {
-    int         bitrate;    //!< Bitrate in Hz
-    int         wordsize;   //!< Word size in bits (use 8)
+    uint32_t    bitrate;    //!< Bitrate in Hz
+    uint8_t     wordsize;   //!< Word size in bits (use 8)
     SPI_MODE    mode;       //!< Frame format (aka SPI mode)
 } SPI_Params;
-
-/*!
- * \brief Initializes SPI things.
- */
-extern void SPI_init();
 
 /*!
  * \brief Open a SPI device for use.
@@ -48,7 +61,7 @@ extern SPI_Handle SPI_open(int bus, int cs, SPI_Params* params);
  * \brief Transfer data over a SPI bus.
  * \param handle a handle to the SPI device to transmit data with
  * \param transaction a pointer to the SPI transaction to make
- * \return 1 if successful, 0 otherwise
+ * \return EXIT_SUCCESS if successful, else EXIT_FAILURE
  */
 extern int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction);
 
@@ -57,3 +70,6 @@ extern int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction);
  * \param handle a handle to the SPI device to close
  */
 extern void SPI_close(SPI_Handle handle);
+
+/*! \} */
+#endif // LIBHWIO_SPI_H
