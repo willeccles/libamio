@@ -1,5 +1,5 @@
 # name our target in a variable for fewer typos and easier modification
-set(TARGET_NAME hwio)
+set(TARGET_NAME amio)
 
 # Include the sources that are in this directory.
 # If more sources are added, or if more subdirectories are added,
@@ -7,10 +7,10 @@ set(TARGET_NAME hwio)
 # This keeps every neat in the top level makefile.
 # Keep this in alphabetical order or you'll be eaten by aliens.
 list(APPEND LIB_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/libcwio-gpio.c
-    ${CMAKE_CURRENT_LIST_DIR}/libcwio-i2c.c
-    ${CMAKE_CURRENT_LIST_DIR}/libcwio-spi.c
-    ${CMAKE_CURRENT_LIST_DIR}/libcwio-uart.c
+    ${CMAKE_CURRENT_LIST_DIR}/libamio-gpio.c
+    ${CMAKE_CURRENT_LIST_DIR}/libamio-i2c.c
+    ${CMAKE_CURRENT_LIST_DIR}/libamio-spi.c
+    ${CMAKE_CURRENT_LIST_DIR}/libamio-uart.c
 )
 
 # add our library target (name is a variable for consistency and

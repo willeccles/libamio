@@ -1,4 +1,4 @@
-# libhwio
+# libamio
 Simple, efficient IO library for SoCs, including SPI, I2C, GPIO, and UART. This library is targeted directly at ARM Linux-RT targets.
 
 This library has the goals of being:
@@ -65,15 +65,15 @@ above, you can just run `make`. This will compile a *static* library, because
 this avoids copying shared libs to an ARM target or having to compile it on
 there as well.
 
-The output from the build can be found in `libhwio/build/bin/lib`.
+The output from the build can be found in `libamio/build/bin/lib`.
 
 ## Documentation
 
 **If you don't want to generate documentation yourself, it's hosted online
-[here](https://willeccles.github.io/libhwio).**
+[here](https://willeccles.github.io/libamio).**
 
 If you have Doxygen installed, you can generate documentation using `make docs`
-in the build directory. These will be generated in the `libhwio/docs/html`
+in the build directory. These will be generated in the `libamio/docs/html`
 directory. Simply open `index.html` and you will be in business. If you don't
 have Doxygen installed, use your preferred package manager to install Doxygen
 and Graphviz.

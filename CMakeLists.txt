@@ -1,5 +1,5 @@
-# LibHWIO CMakeLists
-# This is used to build the hwio library for ARM targets.
+# LibAMIO CMakeLists
+# This is used to build the amio library for ARM targets.
 # Make sure you have the TI linux-rt SDK installed - this will be used to
 # get the right compiler commands and includes for the ARM target.
 cmake_minimum_required (VERSION 3.13)

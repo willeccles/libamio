@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LibHWIO: libhwio</title>
+<title>LibAMIO: libamio</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -34,7 +34,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LibHWIO
+   <div id="projectname">LibAMIO
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">libhwio </div>  </div>
+<div class="title">libamio </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Simple, efficient IO library for SoCs, including SPI, I2C, GPIO, and UART. This library is targeted directly at ARM Linux-RT targets.</p>
@@ -120,10 +120,10 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>This is as simple as specifying <code>CMAKE_BUILD_TYPE</code>, just like most other projects:</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build    # assuming you haven&#39;t already made this directory</div><div class="line">cmake -DCMAKE_BUILD_TYPE=Debug ..</div></div><!-- fragment --><h2>Building</h2>
 <p>Just like any other CMake project, after you've performed the setup steps above, you can just run <code>make</code>. This will compile a <em>static</em> library, because this avoids copying shared libs to an ARM target or having to compile it on there as well.</p>
-<p>The output from the build can be found in <code>libhwio/build/bin/lib</code>.</p>
+<p>The output from the build can be found in <code>libamio/build/bin/lib</code>.</p>
 <h2>Documentation</h2>
-<p><b>If you don't want to generate documentation yourself, it's hosted online <a href="https://willeccles.github.io/libhwio">here</a>.</b></p>
-<p>If you have Doxygen installed, you can generate documentation using <code>make docs</code> in the build directory. These will be generated in the <code>libhwio/docs/html</code> directory. Simply open <code>index.html</code> and you will be in business. If you don't have Doxygen installed, use your preferred package manager to install Doxygen and Graphviz.</p>
+<p><b>If you don't want to generate documentation yourself, it's hosted online <a href="https://willeccles.github.io/libamio">here</a>.</b></p>
+<p>If you have Doxygen installed, you can generate documentation using <code>make docs</code> in the build directory. These will be generated in the <code>libamio/docs/html</code> directory. Simply open <code>index.html</code> and you will be in business. If you don't have Doxygen installed, use your preferred package manager to install Doxygen and Graphviz.</p>
 <h2>Library Credits</h2>
 <p>The libraries included in the <code>lib</code> directory are not made by me, nor owned by me. They are copied from an ARM target in order to keep library versions consistent and controlled. This is important for the project it was required for. I do not own them, nor do I take any responsiblity for anything related to them. All credit for those libraries goes to their respective owners. </p>
 </div></div><!-- PageDoc -->
@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2019 14:42:20 for LibHWIO by
+    <li class="footer">Generated on Thu Aug 29 2019 13:19:46 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
   </ul>
