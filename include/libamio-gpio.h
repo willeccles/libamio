@@ -47,6 +47,10 @@ typedef void(*GPIO_CallbackFxn)(void);
 
 /*!
  * \brief Initialize a GPIO pin to be input or output.
+ *
+ * \note At this time, pins can be shared with other processes.
+ * 
+ * \todo Allow for greedy or weak access to pins?
  * 
  * \param pin the desired pin; use GPIO_PIN macro
  * \param direction whether or not the pin is an input or an output
@@ -65,33 +69,44 @@ extern void GPIO_releasepin(GPIO_Handle pin);
 /*!
  * \brief Write a value to a GPIO pin.
  * \param handle the GPIO pin to use
- * \param val the value for the pin; see GPIO_STATE
+ * \param val the value for the pin; see #GPIO_state
+ * \return EXIT_SUCCESS or EXIT_FAILURE.
  */
-extern void GPIO_write(GPIO_Handle handle, int val);
+extern int GPIO_write(GPIO_Handle handle, GPIO_state val);
 
 /*!
  * \brief Read a value from a GPIO pin.
  * \param handle a handle to the GPIO pin to use
- * \return The state of the GPIO pin.
+ * \return The state of the GPIO pin or -1 on error.
  */
 extern GPIO_state GPIO_read(GPIO_Handle handle);
 
 /*!
- * \brief Enables interrupts for a pin.
+ * \brief Enables interrupt handling for a pin.
  *
  * This should be followed by a call to GPIO_setCallback() for the pin.
  * Interrupts are generated on both rising and falling edges.
  *
  * \param handle a handle to the GPIO pin to use
+ * \return EXIT_SUCCESS or EXIT_FAILURE.
  */
-extern void GPIO_enableInt(GPIO_Handle handle);
+extern int GPIO_enableInt(GPIO_Handle handle);
+
+/*!
+ * \brief Disables interrupt handling for a pin.
+ *
+ * \param handle a handle to the GPIO pin to use
+ * \return EXIT_SUCCESS or EXIT_FAILURE.
+ */
+extern int GPIO_disableInt(GPIO_Handle handle);
 
 /*!
  * \brief Set a callback for a pin with interrupts enabled.
  * \param handle the GPIO pin to use
  * \param fxn the GPIO callback function to associate with the pin
+ * \return EXIT_SUCCESS or EXIT_FAILURE.
  */
-extern void GPIO_setCallback(GPIO_Handle handle, GPIO_CallbackFxn fxn);
+extern int GPIO_setCallback(GPIO_Handle handle, GPIO_CallbackFxn fxn);
 
 #ifdef __cplusplus
 }
