@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spi_5fhandle',['SPI_Handle',['../group__LIBHWIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1',1,'libamio-spi.h']]]
+  ['i2c_5fhandle',['I2C_Handle',['../group__HWIOI2C.html#ga207a3d6e8904a419bf11859544b8abfb',1,'libamio-i2c.h']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['i2c_5fhandle',['I2C_Handle',['../group__HWIOI2C.html#ga207a3d6e8904a419bf11859544b8abfb',1,'libamio-i2c.h']]]
+  ['gpio_5fcallbackfxn',['GPIO_CallbackFxn',['../group__LIBAMIOGPIO.html#ga033bc79f1a530381da2b74711e6b8971',1,'libamio-gpio.h']]],
+  ['gpio_5fhandle',['GPIO_Handle',['../group__LIBAMIOGPIO.html#gae265be5a2ba5fb3ceffcb889a31306a3',1,'libamio-gpio.h']]]
 ];

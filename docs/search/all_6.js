@@ -1,17 +1,13 @@
 var searchData=
 [
-  ['spi',['SPI',['../group__LIBHWIOSPI.html',1,'']]],
-  ['slaveaddress',['slaveAddress',['../structI2C__Transaction.html#aaf0269d5c542d5636bdfd4e72eb4d08f',1,'I2C_Transaction']]],
-  ['spi_5fclose',['SPI_close',['../group__LIBHWIOSPI.html#ga0e3448b30b88609fa120915e49560601',1,'SPI_close(SPI_Handle handle):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#ga0e3448b30b88609fa120915e49560601',1,'SPI_close(SPI_Handle handle):&#160;libamio-spi.c']]],
-  ['spi_5fhandle',['SPI_Handle',['../group__LIBHWIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1',1,'libamio-spi.h']]],
-  ['spi_5fmode',['SPI_MODE',['../group__LIBHWIOSPI.html#gae506139af46f1328f631ddacd54af96d',1,'libamio-spi.h']]],
-  ['spi_5fopen',['SPI_open',['../group__LIBHWIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c']]],
-  ['spi_5fparams',['SPI_Params',['../structSPI__Params.html',1,'']]],
-  ['spi_5fpol0_5fpha0',['SPI_POL0_PHA0',['../group__LIBHWIOSPI.html#ggae506139af46f1328f631ddacd54af96da0396d8c01166ff94e94e0c200261eba3',1,'libamio-spi.h']]],
-  ['spi_5fpol0_5fpha1',['SPI_POL0_PHA1',['../group__LIBHWIOSPI.html#ggae506139af46f1328f631ddacd54af96da340efc6d0f6f3b5be1151444c15faabf',1,'libamio-spi.h']]],
-  ['spi_5fpol1_5fpha0',['SPI_POL1_PHA0',['../group__LIBHWIOSPI.html#ggae506139af46f1328f631ddacd54af96dace88daceb628498715aeda698541c95c',1,'libamio-spi.h']]],
-  ['spi_5fpol1_5fpha1',['SPI_POL1_PHA1',['../group__LIBHWIOSPI.html#ggae506139af46f1328f631ddacd54af96da4441729b292511628cb1e9f102da9166',1,'libamio-spi.h']]],
-  ['spi_5ftransaction',['SPI_Transaction',['../structSPI__Transaction.html',1,'']]],
-  ['spi_5ftransfer',['SPI_transfer',['../group__LIBHWIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c']]],
-  ['spidevice',['spidevice',['../structspidevice.html',1,'']]]
+  ['i2c',['I2C',['../group__HWIOI2C.html',1,'']]],
+  ['i2c_5fclose',['I2C_close',['../group__HWIOI2C.html#ga12c86d89a687f2ee1eb980d99c32326d',1,'I2C_close(I2C_Handle handle):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#ga12c86d89a687f2ee1eb980d99c32326d',1,'I2C_close(I2C_Handle handle):&#160;libamio-i2c.c']]],
+  ['i2c_5fhandle',['I2C_Handle',['../group__HWIOI2C.html#ga207a3d6e8904a419bf11859544b8abfb',1,'libamio-i2c.h']]],
+  ['i2c_5fopen',['I2C_open',['../group__HWIOI2C.html#gaa4c44095798edf52179b0a6106c054ea',1,'I2C_open(uint8_t devnum):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#gaa4c44095798edf52179b0a6106c054ea',1,'I2C_open(uint8_t devnum):&#160;libamio-i2c.c']]],
+  ['i2c_5ftransaction',['I2C_Transaction',['../structI2C__Transaction.html',1,'']]],
+  ['i2c_5ftransfer',['I2C_transfer',['../group__HWIOI2C.html#ga7f5ed4bcd8bb186e6c2c2dc10909817a',1,'I2C_transfer(I2C_Handle handle, I2C_Transaction *transaction):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#ga7f5ed4bcd8bb186e6c2c2dc10909817a',1,'I2C_transfer(I2C_Handle handle, I2C_Transaction *transaction):&#160;libamio-i2c.c']]],
+  ['i2cdevice',['i2cdevice',['../structi2cdevice.html',1,'']]],
+  ['inactive',['INACTIVE',['../group__LIBAMIOGPIO.html#gga113eb9ea93c94a0ff55198f174d58760a3ff8ba88da6f8947ab7c22b7825c6bb6',1,'libamio-gpio.h']]],
+  ['input',['INPUT',['../group__LIBAMIOGPIO.html#gga8cfc584d8398879bb293cf1eb01fb138ae310c909d76b003d016bef8bdf16936a',1,'libamio-gpio.h']]],
+  ['int_5fen',['int_en',['../structgpiodev.html#a30806c0a20dca490db0ed62a71e7d094',1,'gpiodev']]]
 ];

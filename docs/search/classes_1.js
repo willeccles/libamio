@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['spi_5fparams',['SPI_Params',['../structSPI__Params.html',1,'']]],
-  ['spi_5ftransaction',['SPI_Transaction',['../structSPI__Transaction.html',1,'']]],
-  ['spidevice',['spidevice',['../structspidevice.html',1,'']]]
+  ['i2c_5ftransaction',['I2C_Transaction',['../structI2C__Transaction.html',1,'']]],
+  ['i2cdevice',['i2cdevice',['../structi2cdevice.html',1,'']]]
 ];

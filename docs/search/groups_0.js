@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['i2c',['I2C',['../group__HWIOI2C.html',1,'']]]
+  ['gpio',['GPIO',['../group__LIBAMIOGPIO.html',1,'']]]
 ];

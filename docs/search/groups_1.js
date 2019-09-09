@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spi',['SPI',['../group__LIBHWIOSPI.html',1,'']]]
+  ['i2c',['I2C',['../group__HWIOI2C.html',1,'']]]
 ];

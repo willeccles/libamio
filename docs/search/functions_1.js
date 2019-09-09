@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['spi_5fclose',['SPI_close',['../group__LIBHWIOSPI.html#ga0e3448b30b88609fa120915e49560601',1,'SPI_close(SPI_Handle handle):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#ga0e3448b30b88609fa120915e49560601',1,'SPI_close(SPI_Handle handle):&#160;libamio-spi.c']]],
-  ['spi_5fopen',['SPI_open',['../group__LIBHWIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c']]],
-  ['spi_5ftransfer',['SPI_transfer',['../group__LIBHWIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c'],['../group__LIBHWIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c']]]
+  ['i2c_5fclose',['I2C_close',['../group__HWIOI2C.html#ga12c86d89a687f2ee1eb980d99c32326d',1,'I2C_close(I2C_Handle handle):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#ga12c86d89a687f2ee1eb980d99c32326d',1,'I2C_close(I2C_Handle handle):&#160;libamio-i2c.c']]],
+  ['i2c_5fopen',['I2C_open',['../group__HWIOI2C.html#gaa4c44095798edf52179b0a6106c054ea',1,'I2C_open(uint8_t devnum):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#gaa4c44095798edf52179b0a6106c054ea',1,'I2C_open(uint8_t devnum):&#160;libamio-i2c.c']]],
+  ['i2c_5ftransfer',['I2C_transfer',['../group__HWIOI2C.html#ga7f5ed4bcd8bb186e6c2c2dc10909817a',1,'I2C_transfer(I2C_Handle handle, I2C_Transaction *transaction):&#160;libamio-i2c.c'],['../group__HWIOI2C.html#ga7f5ed4bcd8bb186e6c2c2dc10909817a',1,'I2C_transfer(I2C_Handle handle, I2C_Transaction *transaction):&#160;libamio-i2c.c']]]
 ];
