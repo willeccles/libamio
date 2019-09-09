@@ -1,4 +1,7 @@
 # libamio
+
+*See the GitHub repository for this project [here](https://github.com/willeccles/libamio).*
+
 Simple, efficient IO library for SoCs, including SPI, I2C, GPIO, and UART. This library is targeted directly at ARM Linux-RT targets.
 
 This library has the goals of being:
