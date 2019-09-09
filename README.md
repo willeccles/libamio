@@ -66,7 +66,7 @@ above, you can just run `make`. This will compile a *static* library, because
 this avoids copying shared libs to an ARM target or having to compile it on
 there as well.
 
-The output from the build can be found in `libamio/build/bin/lib`.
+The output from the build can be found in `libamio/bin/lib`.
 
 ## Documentation
 
