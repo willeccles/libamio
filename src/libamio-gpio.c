@@ -108,9 +108,22 @@ errorafterinit:
     return NULL;
 }
 
-void GPIO_releasepin(GPIO_Handle pin) {
-    if (pin == NULL) {
-        return;
+void GPIO_release(GPIO_Handle pin) {
+    if (pin != NULL) {
+        gpiodev* dev = (gpiodev*)pin;
+        if (dev->cb != NULL) {
+            dev->int_en = 0;
+            if (dev->cb->thread != NULL) {
+                pthread_cancel(*(dev->cb->thread));
+                pthread_join(*(dev->cb->thread), NULL);
+                pthread_mutex_unlock(&(dev->cb->lock));
+                pthread_mutex_destroy(&(dev->cb->lock));
+                free(dev->cb->thread);
+                free(dev->cb);
+                dev->cb = NULL;
+            }
+        }
+        free(dev);
     }
 }
 
@@ -224,18 +237,21 @@ static void* _pollthreadfunc(void* dev) {
     char c;
 
     while (1) {
-        // read to clear interrupt
-        ret = lseek(_dev->fd_val, 0, SEEK_SET);
-        ret = read(_dev->fd_val, &c, 1);
+        // TODO this may cause issues with races
+        if (_dev->int_en) {
+            // read to clear interrupt
+            ret = lseek(_dev->fd_val, 0, SEEK_SET);
+            ret = read(_dev->fd_val, &c, 1);
 
-        // now poll
-        ret = poll(&_dev->fd_poll, 1, -1);
-        if (ret == 1 && _dev->fd_poll.revents & POLLPRI) {
-            // clear interrupt
-            read(_dev->fd_val, &c, 1);
-            
-            // perform callback
-            _dev->cb->fn();
+            // now poll
+            ret = poll(&_dev->fd_poll, 1, -1);
+            if (ret == 1 && _dev->fd_poll.revents & POLLPRI) {
+                // clear interrupt
+                read(_dev->fd_val, &c, 1);
+                
+                // perform callback
+                _dev->cb->fn();
+            }
         }
     }
 }

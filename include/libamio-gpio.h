@@ -64,7 +64,7 @@ extern GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction);
  *
  * \param pin a handle to the GPIO pin to release
  */
-extern void GPIO_releasepin(GPIO_Handle pin);
+extern void GPIO_release(GPIO_Handle pin);
 
 /*!
  * \brief Write a value to a GPIO pin.
