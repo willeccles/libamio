@@ -65,7 +65,10 @@ extern SPI_Handle SPI_open(int bus, int cs, SPI_Params* params);
  * \brief Transfer data over a SPI bus.
  * \param handle a handle to the SPI device to transmit data with
  * \param transaction a pointer to the SPI transaction to make
- * \return EXIT_SUCCESS if successful, else EXIT_FAILURE
+ * \return EXIT_SUCCESS if successful, else EXIT_FAILURE. If the transaction's
+ *                      \c count value is 0, this will return EXIT_SUCCESS,
+ *                      because technically
+ *                      there was no error.
  */
 extern int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction);
 

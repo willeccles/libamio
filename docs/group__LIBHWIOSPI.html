@@ -289,7 +289,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS if successful, else EXIT_FAILURE </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS if successful, else EXIT_FAILURE. If the transaction's <code>count</code> value is 0, this will return EXIT_SUCCESS, because technically there was no error. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00095">95</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
@@ -302,7 +302,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Sep 9 2019 11:35:08 for LibAMIO by
+    <li class="footer">Generated on Mon Sep 9 2019 12:36:30 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
   </ul>

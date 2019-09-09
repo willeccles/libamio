@@ -27,7 +27,7 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
     dev->cs = cs;
 
     char devpath[35];
-    snprintf(devpath, 35 "/dev/spidev%d.%d", dev->bus, dev->cs);
+    snprintf(devpath, 35, "/dev/spidev%d.%d", dev->bus, dev->cs);
 
     if (EXIT_SUCCESS != access(devpath, F_OK)) {
         free(dev);
