@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "libhwio-i2c.h"
+#include "libamio-i2c.h"
 
 typedef struct {
     int fd;
@@ -20,7 +20,7 @@ typedef struct {
 // timeout should be in 10s of milliseconds, i.e. 2 = 20ms
 static int set_timeout(i2cdevice* dev, int timeout);
 
-static int i2c_rdwr(i2cdevice* dev, i2c_msg* message);
+static int i2c_rdwr(i2cdevice* dev, struct i2c_msg* message);
 
 I2C_Handle I2C_open(uint8_t devnum) {
     i2cdevice* dev = (i2cdevice*)malloc(sizeof(i2cdevice));
@@ -66,7 +66,7 @@ int I2C_transfer(I2C_Handle handle, I2C_Transaction* transaction) {
 
     if ((transaction->readCount && transaction->readBuf == NULL)
             || (transaction->writeCount && transaction->writeBuf == NULL)) {
-        return EXIT_FAILURE
+        return EXIT_FAILURE;
     }
 
     // set timeout
@@ -118,7 +118,7 @@ void I2C_close(I2C_Handle handle) {
 
 // timeout should be in 10s of milliseconds, i.e. 2 = 20ms
 static int set_timeout(i2cdevice* dev, int timeout) {
-    if (handle == NULL || timeout < 0) {
+    if (dev == NULL || timeout < 0) {
         return EXIT_FAILURE;
     }
 
@@ -129,7 +129,7 @@ static int set_timeout(i2cdevice* dev, int timeout) {
     return EXIT_SUCCESS;
 }
 
-static int i2c_rdwr(i2cdevice* dev, i2c_msg* message) {
+static int i2c_rdwr(i2cdevice* dev, struct i2c_msg* message) {
     if (dev == NULL || message == NULL) {
         return EXIT_FAILURE;
     }

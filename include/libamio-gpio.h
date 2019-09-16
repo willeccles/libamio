@@ -13,6 +13,8 @@
 #ifndef LIBAMIO_GPIO_H
 #define LIBAMIO_GPIO_H
 
+#include <stdint.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
