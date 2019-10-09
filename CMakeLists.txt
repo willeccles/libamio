@@ -47,7 +47,7 @@ endif()
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/arm-toolchain.cmake)
 
 # this has to come after the CMAKE_TOOLCHAIN_FILE above
-project (LibHWIO VERSION 0.0.1 DESCRIPTION "Library for AM335x SoC IO.")
+project (LibAMIO VERSION 0.0.1 DESCRIPTION "Library for AM335x SoC IO.")
 
 # print info about our parameters
 MESSAGE("CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
