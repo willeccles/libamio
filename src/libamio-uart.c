@@ -1,9 +1,15 @@
 #include <errno.h>
 #include <fcntl.h>
+#include <linux/ioctl.h>
+#include <linux/spi/spidev.h>
+#include <linux/types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
 #include <termios.h>
+#include <unistd.h>
 
 #include "libamio-uart.h"
 
@@ -41,11 +47,11 @@ UART_Handle UART_Open(const char* dev, UART_BAUD baud) {
     // \todo look into O_NONBLOCK for this and maybe others?
     int fd = open(dev, O_RDWR | O_NOCTTY | O_SYNC); // no CTTY makes sure the tty doesn't start controlling this program
     if (fd < 0) {
-        errExit();
+        return -1;
     }
 
     if (0 != set_interface_attribs(fd, baud)) {
-        errExit();
+        return -1;
     }
 
     return fd;

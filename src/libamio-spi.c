@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "libhwio-spi.h"
+#include "libamio-spi.h"
 
 typedef struct {
     int fd;
@@ -107,9 +107,9 @@ int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction) {
     // we don't have to do anything special to accomodate for rxBuf being NULL,
     // since making .rx_buf == NULL already does this for us
     struct spi_ioc_transfer msg = (struct spi_ioc_transfer){
-        .rx_buf = (unsigned long)params->rxBuf,
-        .tx_buf = (unsigned long)params->txBuf,
-        .len = params->count,
+        .rx_buf = (unsigned long)transaction->rxBuf,
+        .tx_buf = (unsigned long)transaction->txBuf,
+        .len = transaction->count,
     };
 
     int r = ioctl(dev->fd, SPI_IOC_MESSAGE(1), &msg);

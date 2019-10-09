@@ -13,11 +13,8 @@ OSD-335x and the BeagleBone Black.
 
 ## Prebuilt Libraries
 
-There may or may not be releases available on GitHub on the Releases tab. These
-would be pre-compiled static libraries for ARM targets. These would be ready to
-compile into executables. Their release pages would also include the header
-files corresponding to their versions in order to keep consistency in case of
-updates to the interfaces.
+There will be prebuilt libraries on the GitHub Releases page. These will be (as
+expected) compiled for ARM.
 
 ## Requirements
 

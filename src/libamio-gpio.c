@@ -200,7 +200,7 @@ int GPIO_setCallback(GPIO_Handle handle, GPIO_CallbackFxn fxn) {
     pthread_attr_init(&attr);
     pthread_attr_setschedpolicy(&attr, SCHED_FIFO);
 
-    struct gpiocallback *callback = (gpiocallback*)malloc(sizeof(gpiocallback));
+    gpiocallback *callback = (gpiocallback*)malloc(sizeof(gpiocallback));
 
     callback->fn = fxn;
     callback->thread = pollthread;
@@ -208,7 +208,7 @@ int GPIO_setCallback(GPIO_Handle handle, GPIO_CallbackFxn fxn) {
     pthread_mutex_init(&callback->lock, NULL);
     pthread_mutex_lock(&callback->lock);
 
-    handle->cb = callback;
+    dev->cb = callback;
 
     if (0 == pthread_create(pollthread, NULL, _pollthreadfunc, handle)) {
         pthread_mutex_lock(&callback->lock);
