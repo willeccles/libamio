@@ -30,7 +30,7 @@ I2C_Handle I2C_open(uint8_t devnum) {
 
     dev->devnum = devnum;
 
-    char devpath[30];
+    char devpath[35];
 
     snprintf(devpath, 35, "/dev/i2c-%hhu", dev->devnum);
 
