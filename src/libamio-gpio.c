@@ -92,7 +92,7 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
         goto errorafterinit;
     }
     
-    if (write(fd, direction_strs[direction], 3) < 0) {
+    if (write(fd, direction_strs[direction], strlen(direction_strs[direction])) < 0) {
         close(fd);
         goto errorafterinit;
     }
