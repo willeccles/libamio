@@ -7,6 +7,12 @@ var group__LIBAMIOGPIO =
       [ "INPUT", "group__LIBAMIOGPIO.html#gga8cfc584d8398879bb293cf1eb01fb138ae310c909d76b003d016bef8bdf16936a", null ],
       [ "OUTPUT", "group__LIBAMIOGPIO.html#gga8cfc584d8398879bb293cf1eb01fb138a2ab08d3e103968f5f4f26b66a52e99d6", null ]
     ] ],
+    [ "GPIO_edge", "group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35", [
+      [ "NONE", "group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ac157bdf0b85a40d2619cbc8bc1ae5fe2", null ],
+      [ "RISING", "group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ad93abe7aced82e9a4fcac4127a36ece3", null ],
+      [ "FALLING", "group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ad24712a6a30c1d431b927d1ba2f84b66", null ],
+      [ "BOTH", "group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35a627abe5a430420baf29ebe1940a7f2fb", null ]
+    ] ],
     [ "GPIO_state", "group__LIBAMIOGPIO.html#ga113eb9ea93c94a0ff55198f174d58760", [
       [ "LOW", "group__LIBAMIOGPIO.html#gga113eb9ea93c94a0ff55198f174d58760a6a226f4143ca3b18999551694cdb72a8", null ],
       [ "HIGH", "group__LIBAMIOGPIO.html#gga113eb9ea93c94a0ff55198f174d58760a0c3a1dacf94061154b3ee354359c5893", null ],
@@ -19,5 +25,6 @@ var group__LIBAMIOGPIO =
     [ "GPIO_read", "group__LIBAMIOGPIO.html#gab6bb4215a887359b825b7ec2494fa4d3", null ],
     [ "GPIO_release", "group__LIBAMIOGPIO.html#ga600202739ca2fa16a35445d0566f3a02", null ],
     [ "GPIO_setCallback", "group__LIBAMIOGPIO.html#ga0eac2939754823492ec7e32638af4d97", null ],
+    [ "GPIO_setEdge", "group__LIBAMIOGPIO.html#gafc87e7776aedb015c36bc7839de1bd9c", null ],
     [ "GPIO_write", "group__LIBAMIOGPIO.html#ga8c4b3f8f68f069a7eaef26edbd2a9773", null ]
 ];

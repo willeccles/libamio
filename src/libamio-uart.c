@@ -44,8 +44,7 @@ static const int BAUDS[] = {
 static int set_interface_attribs(int fd, UART_BAUD speed);
 
 UART_Handle UART_Open(const char* dev, UART_BAUD baud) {
-    // \todo look into O_NONBLOCK for this and maybe others?
-    int fd = open(dev, O_RDWR | O_NOCTTY | O_SYNC); // no CTTY makes sure the tty doesn't start controlling this program
+    int fd = open(dev, O_RDWR | O_NOCTTY | O_SYNC | O_NONBLOCK); // no CTTY makes sure the tty doesn't start controlling this program
     if (fd < 0) {
         return -1;
     }
@@ -72,9 +71,16 @@ static int set_interface_attribs(int fd, UART_BAUD speed) {
     if (tcgetattr(fd, &tty) < 0) {
         return -1;
     }
+    
+    speed_t baud;
+    if (speed > UART_115200) {
+        baud = (speed_t)speed;
+    } else {
+        baud = BAUDS[speed];
+    }
 
-    cfsetospeed(&tty, (speed_t)BAUDS[speed]);
-    cfsetispeed(&tty, (speed_t)BAUDS[speed]);
+    cfsetospeed(&tty, baud);
+    cfsetispeed(&tty, baud);
 
     tty.c_cflag |= (CLOCAL | CREAD);    /* ignore modem controls */
     tty.c_cflag &= ~CSIZE;

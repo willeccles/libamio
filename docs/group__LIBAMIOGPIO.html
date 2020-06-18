@@ -133,6 +133,13 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:ga8cfc584d8398879bb293cf1eb01fb138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction options for GPIO pins.  <a href="group__LIBAMIOGPIO.html#ga8cfc584d8398879bb293cf1eb01fb138">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga8cfc584d8398879bb293cf1eb01fb138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga265c89526a51725f6258907755eeab35"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35">GPIO_edge</a> { <a class="el" href="group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a>, 
+<a class="el" href="group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ad93abe7aced82e9a4fcac4127a36ece3">RISING</a>, 
+<a class="el" href="group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35ad24712a6a30c1d431b927d1ba2f84b66">FALLING</a>, 
+<a class="el" href="group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35a627abe5a430420baf29ebe1940a7f2fb">BOTH</a>
+ }<tr class="memdesc:ga265c89526a51725f6258907755eeab35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valid edges for interrupts.  <a href="group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga265c89526a51725f6258907755eeab35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -151,6 +158,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa6902d5069670dc91df98e6cd08caace"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOGPIO.html#gaa6902d5069670dc91df98e6cd08caace">GPIO_enableInt</a> (<a class="el" href="group__LIBAMIOGPIO.html#gae265be5a2ba5fb3ceffcb889a31306a3">GPIO_Handle</a> handle)</td></tr>
 <tr class="memdesc:gaa6902d5069670dc91df98e6cd08caace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables interrupt handling for a pin.  <a href="#gaa6902d5069670dc91df98e6cd08caace">More...</a><br /></td></tr>
 <tr class="separator:gaa6902d5069670dc91df98e6cd08caace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc87e7776aedb015c36bc7839de1bd9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOGPIO.html#gafc87e7776aedb015c36bc7839de1bd9c">GPIO_setEdge</a> (<a class="el" href="group__LIBAMIOGPIO.html#gae265be5a2ba5fb3ceffcb889a31306a3">GPIO_Handle</a> handle, <a class="el" href="group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35">GPIO_edge</a> edge)</td></tr>
+<tr class="memdesc:gafc87e7776aedb015c36bc7839de1bd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the edge(s) that the interrupt callback should be triggered on.  <a href="#gafc87e7776aedb015c36bc7839de1bd9c">More...</a><br /></td></tr>
+<tr class="separator:gafc87e7776aedb015c36bc7839de1bd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf3b8cd6c655ee82e79dc7a8e0b684754"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOGPIO.html#gaf3b8cd6c655ee82e79dc7a8e0b684754">GPIO_disableInt</a> (<a class="el" href="group__LIBAMIOGPIO.html#gae265be5a2ba5fb3ceffcb889a31306a3">GPIO_Handle</a> handle)</td></tr>
 <tr class="memdesc:gaf3b8cd6c655ee82e79dc7a8e0b684754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables interrupt handling for a pin.  <a href="#gaf3b8cd6c655ee82e79dc7a8e0b684754">More...</a><br /></td></tr>
 <tr class="separator:gaf3b8cd6c655ee82e79dc7a8e0b684754"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +195,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga265c89526a51725f6258907755eeab35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga265c89526a51725f6258907755eeab35">&#9670;&nbsp;</a></span>GPIO_edge</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35">GPIO_edge</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Valid edges for interrupts. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga265c89526a51725f6258907755eeab35ac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"><p>No interrupts. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga265c89526a51725f6258907755eeab35ad93abe7aced82e9a4fcac4127a36ece3"></a>RISING&#160;</td><td class="fielddoc"><p>Interrupts on rising edges. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga265c89526a51725f6258907755eeab35ad24712a6a30c1d431b927d1ba2f84b66"></a>FALLING&#160;</td><td class="fielddoc"><p>Interrupts on falling edges. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga265c89526a51725f6258907755eeab35a627abe5a430420baf29ebe1940a7f2fb"></a>BOTH&#160;</td><td class="fielddoc"><p>Interrupts on rising and falling edges. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8h_source.html#l00043">43</a> of file <a class="el" href="libamio-gpio_8h_source.html">libamio-gpio.h</a>.</p>
+
+</div>
+</div>
 <a id="ga113eb9ea93c94a0ff55198f174d58760"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga113eb9ea93c94a0ff55198f174d58760">&#9670;&nbsp;</a></span>GPIO_state</h2>
 
@@ -199,9 +237,9 @@ Functions</h2></td></tr>
 
 <p>States for GPIO pins. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga113eb9ea93c94a0ff55198f174d58760a6a226f4143ca3b18999551694cdb72a8"></a>LOW&#160;</td><td class="fielddoc"><p>Pin state is HIGH. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga113eb9ea93c94a0ff55198f174d58760a6a226f4143ca3b18999551694cdb72a8"></a>LOW&#160;</td><td class="fielddoc"><p>Pin state is LOW. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga113eb9ea93c94a0ff55198f174d58760a0c3a1dacf94061154b3ee354359c5893"></a>HIGH&#160;</td><td class="fielddoc"><p>Pin state is LOW. </p>
+<tr><td class="fieldname"><a id="gga113eb9ea93c94a0ff55198f174d58760a0c3a1dacf94061154b3ee354359c5893"></a>HIGH&#160;</td><td class="fielddoc"><p>Pin state is HIGH. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga113eb9ea93c94a0ff55198f174d58760a33cf1d8ef1d06ee698a7fabf40eb3a7f"></a>ACTIVE&#160;</td><td class="fielddoc"><p>Pin state is HIGH. </p>
 </td></tr>
@@ -239,7 +277,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS or EXIT_FAILURE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00179">179</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00227">227</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00026">gpiodev::cb</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::int_en</a>.</p>
 
 </div>
 </div>
@@ -269,7 +309,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS or EXIT_FAILURE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00169">169</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00196">196</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00026">gpiodev::cb</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::int_en</a>.</p>
 
 </div>
 </div>
@@ -311,9 +353,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A handle to the GPIO pin, or NULL. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00036">36</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00042">42</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
 
-<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::cb</a>, <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_poll</a>, <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00036">INPUT</a>, <a class="el" href="libamio-gpio_8c_source.html#l00024">gpiodev::int_en</a>, <a class="el" href="libamio-gpio_8h_source.html#l00037">OUTPUT</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00021">gpiodev::pin</a>.</p>
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00026">gpiodev::cb</a>, <a class="el" href="libamio-gpio_8c_source.html#l00024">gpiodev::fd_poll</a>, <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00036">INPUT</a>, <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::int_en</a>, <a class="el" href="libamio-gpio_8h_source.html#l00037">OUTPUT</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::pin</a>.</p>
 
 </div>
 </div>
@@ -342,9 +384,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The state of the GPIO pin or -1 on error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00144">144</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00149">149</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
 
-<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00027">HIGH</a>, and <a class="el" href="libamio-gpio_8h_source.html#l00026">LOW</a>.</p>
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00027">HIGH</a>, and <a class="el" href="libamio-gpio_8h_source.html#l00026">LOW</a>.</p>
 
 </div>
 </div>
@@ -372,9 +414,9 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00111">111</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00120">120</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
 
-<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::cb</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00024">gpiodev::int_en</a>.</p>
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00026">gpiodev::cb</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::int_en</a>.</p>
 
 </div>
 </div>
@@ -405,6 +447,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set a callback for a pin with interrupts enabled. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This function should only ever be called once per GPIO. If you need to set a different callback, you'll need to destroy and re-init the GPIO device. This is a bug which is somewhere on the TODO list. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>the GPIO pin to use </td></tr>
@@ -414,9 +457,51 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS or EXIT_FAILURE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00189">189</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00244">244</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
 
-<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::cb</a>, <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_poll</a>, <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::fd_val</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00024">gpiodev::int_en</a>.</p>
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00026">gpiodev::cb</a>, <a class="el" href="libamio-gpio_8c_source.html#l00024">gpiodev::fd_poll</a>, <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_val</a>, and <a class="el" href="libamio-gpio_8c_source.html#l00025">gpiodev::int_en</a>.</p>
+
+</div>
+</div>
+<a id="gafc87e7776aedb015c36bc7839de1bd9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafc87e7776aedb015c36bc7839de1bd9c">&#9670;&nbsp;</a></span>GPIO_setEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GPIO_setEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__LIBAMIOGPIO.html#gae265be5a2ba5fb3ceffcb889a31306a3">GPIO_Handle</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__LIBAMIOGPIO.html#ga265c89526a51725f6258907755eeab35">GPIO_edge</a>&#160;</td>
+          <td class="paramname"><em>edge</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the edge(s) that the interrupt callback should be triggered on. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>the GPIO device to configure </td></tr>
+    <tr><td class="paramname">edge</td><td>the edge(s) to interrupt on </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS or EXIT_FAILURE </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00174">174</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::pin</a>.</p>
 
 </div>
 </div>
@@ -456,9 +541,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS or EXIT_FAILURE. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00130">130</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-gpio_8c_source.html#l00135">135</a> of file <a class="el" href="libamio-gpio_8c_source.html">libamio-gpio.c</a>.</p>
 
-<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00022">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00027">HIGH</a>, and <a class="el" href="libamio-gpio_8h_source.html#l00026">LOW</a>.</p>
+<p class="reference">References <a class="el" href="libamio-gpio_8c_source.html#l00023">gpiodev::fd_val</a>, <a class="el" href="libamio-gpio_8h_source.html#l00027">HIGH</a>, and <a class="el" href="libamio-gpio_8h_source.html#l00026">LOW</a>.</p>
 
 </div>
 </div>
@@ -467,7 +552,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Sep 16 2019 11:08:51 for LibAMIO by
+    <li class="footer">Generated on Thu Jun 18 2020 15:16:37 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

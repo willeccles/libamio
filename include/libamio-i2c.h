@@ -1,16 +1,16 @@
 /*!
- * \file libhwio-i2c.h
+ * \file libamio-i2c.h
  * \author Will Eccles
  * \date 2019-08-28
  * \brief Defines various I2C-related types, structures, and functions.
  *
- * \defgroup HWIOI2C I2C
+ * \defgroup AMIOI2C I2C
  * Contains I2C functionality.
  * \todo Add support for slave mode.
  * \{
  */
-#ifndef HWIO_I2C_H
-#define HWIO_I2C_H
+#ifndef AMIO_I2C_H
+#define AMIO_I2C_H
 
 #include <stdint.h>
 

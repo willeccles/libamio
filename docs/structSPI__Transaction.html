@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('structSPI__Transaction.html','');});
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">SPI_Transaction Struct Reference<div class="ingroups"><a class="el" href="group__LIBHWIOSPI.html">SPI</a></div></div>  </div>
+<div class="title">SPI_Transaction Struct Reference<div class="ingroups"><a class="el" href="group__LIBAMIOSPI.html">SPI</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -102,10 +102,10 @@ $(document).ready(function(){initNavTree('structSPI__Transaction.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ae7b7b01b1b979b2779c67c971a0e5549"><td class="memItemLeft" align="right" valign="top"><a id="ae7b7b01b1b979b2779c67c971a0e5549"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSPI__Transaction.html#ae7b7b01b1b979b2779c67c971a0e5549">count</a></td></tr>
-<tr class="memdesc:ae7b7b01b1b979b2779c67c971a0e5549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes to transmit+receive. <br /></td></tr>
-<tr class="separator:ae7b7b01b1b979b2779c67c971a0e5549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad049d6a900c4bdb59a5ee8ce3d5bced2"><td class="memItemLeft" align="right" valign="top"><a id="ad049d6a900c4bdb59a5ee8ce3d5bced2"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSPI__Transaction.html#ad049d6a900c4bdb59a5ee8ce3d5bced2">count</a></td></tr>
+<tr class="memdesc:ad049d6a900c4bdb59a5ee8ce3d5bced2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes to transmit+receive. <br /></td></tr>
+<tr class="separator:ad049d6a900c4bdb59a5ee8ce3d5bced2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7876ea72af44d61a79727d17b1d2a80"><td class="memItemLeft" align="right" valign="top"><a id="ad7876ea72af44d61a79727d17b1d2a80"></a>
 uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSPI__Transaction.html#ad7876ea72af44d61a79727d17b1d2a80">rxBuf</a></td></tr>
 <tr class="memdesc:ad7876ea72af44d61a79727d17b1d2a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer into which data should be written (NULL if you wish to only send but not receive) <br /></td></tr>
@@ -117,9 +117,9 @@ uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wrapper SPI transaction struct. </p>
-<dl class="section note"><dt>Note</dt><dd>Both <a class="el" href="structSPI__Transaction.html#ad2cb124bb8e273fd6be472faa91399cb" title="Buffer from which to transmit data. ">txBuf</a> and <a class="el" href="structSPI__Transaction.html#ad7876ea72af44d61a79727d17b1d2a80" title="Buffer into which data should be written (NULL if you wish to only send but not receive) ...">rxBuf</a> need to be non-NULL and should have the same length, which should be less than or equal to <a class="el" href="structSPI__Transaction.html#ae7b7b01b1b979b2779c67c971a0e5549" title="Number of bytes to transmit+receive. ">count</a>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Both <a class="el" href="structSPI__Transaction.html#ad2cb124bb8e273fd6be472faa91399cb" title="Buffer from which to transmit data. ">txBuf</a> and <a class="el" href="structSPI__Transaction.html#ad7876ea72af44d61a79727d17b1d2a80" title="Buffer into which data should be written (NULL if you wish to only send but not receive) ...">rxBuf</a> need to be non-NULL and should have the same length, which should be less than or equal to <a class="el" href="structSPI__Transaction.html#ad049d6a900c4bdb59a5ee8ce3d5bced2" title="Number of bytes to transmit+receive. ">count</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-spi_8h_source.html#l00039">39</a> of file <a class="el" href="libamio-spi_8h_source.html">libamio-spi.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8h_source.html#l00041">41</a> of file <a class="el" href="libamio-spi_8h_source.html">libamio-spi.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/<a class="el" href="libamio-spi_8h_source.html">libamio-spi.h</a></li>
 </ul>
@@ -129,7 +129,7 @@ uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structSPI__Transaction.html">SPI_Transaction</a></li>
-    <li class="footer">Generated on Mon Sep 16 2019 11:08:51 for LibAMIO by
+    <li class="footer">Generated on Thu Jun 18 2020 15:16:37 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

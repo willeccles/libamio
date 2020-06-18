@@ -23,8 +23,8 @@ extern "C" {
  * \brief States for GPIO pins.
  */
 typedef enum {
-    LOW = 0,        //!< Pin state is HIGH
-    HIGH = 1,       //!< Pin state is LOW
+    LOW = 0,        //!< Pin state is LOW
+    HIGH = 1,       //!< Pin state is HIGH
     ACTIVE = HIGH,  //!< Pin state is HIGH
     INACTIVE = LOW, //!< Pin state is LOW
 } GPIO_state;
@@ -36,6 +36,16 @@ typedef enum {
     INPUT,      //!< Pin is an input
     OUTPUT,     //!< Pin is an output
 } GPIO_direction;
+
+/*!
+ * \brief Valid edges for interrupts.
+ */
+typedef enum {
+    NONE,       //!< No interrupts
+    RISING,     //!< Interrupts on rising edges
+    FALLING,    //!< Interrupts on falling edges
+    BOTH,       //!< Interrupts on rising and falling edges
+} GPIO_edge;
 
 //! Handle to a GPIO pin.
 typedef void* GPIO_Handle;
@@ -95,6 +105,14 @@ extern GPIO_state GPIO_read(GPIO_Handle handle);
 extern int GPIO_enableInt(GPIO_Handle handle);
 
 /*!
+ * \brief Sets the edge(s) that the interrupt callback should be triggered on.
+ * \param handle the GPIO device to configure
+ * \param edge the edge(s) to interrupt on
+ * \return EXIT_SUCCESS or EXIT_FAILURE
+ */
+extern int GPIO_setEdge(GPIO_Handle handle, GPIO_edge edge);
+
+/*!
  * \brief Disables interrupt handling for a pin.
  *
  * \param handle a handle to the GPIO pin to use
@@ -104,6 +122,9 @@ extern int GPIO_disableInt(GPIO_Handle handle);
 
 /*!
  * \brief Set a callback for a pin with interrupts enabled.
+ * \warning This function should only ever be called once per GPIO. If you
+ *          need to set a different callback, you'll need to destroy and re-init
+ *          the GPIO device. This is a bug which is somewhere on the TODO list.
  * \param handle the GPIO pin to use
  * \param fxn the GPIO callback function to associate with the pin
  * \return EXIT_SUCCESS or EXIT_FAILURE.

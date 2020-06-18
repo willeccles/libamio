@@ -8,30 +8,36 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <stdatomic.h>
+#include <stdbool.h>
 
 #include "libamio-gpio.h"
 
 typedef struct {
     GPIO_CallbackFxn fn;
     pthread_t *thread;
-    pthread_mutex_t lock;
 } gpiocallback;
 
 typedef struct {
     unsigned int pin;       //!< Pin number
     int fd_val;             //!< Value file descriptor
     struct pollfd fd_poll;  //!< \c pollfd used for polling
-    uint8_t int_en;         //!< Interrupts enabled flag
-    gpiocallback *cb;       //!< Callback for interrupts
+    atomic_bool int_en;     //!< Interrupts enabled flag
+    gpiocallback cb;        //!< Callback for interrupts
 } gpiodev;
 
 // strings used for setting the direction
 char* direction_strs[] = { "in", "out" };
 // strings used to set values
 char* value_strs[] = { "0", "1" };
+// strings used to set edges
+char* edge_strs[] = { "none", "rising", "falling", "both" };
 
 // function run by the polling threads
 static void* _pollthreadfunc(void* dev);
+
+// set the edge for a pin
+static int set_edge(int pin, char* edgestr);
 
 GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
     if (direction != INPUT && direction != OUTPUT) {
@@ -39,23 +45,25 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
     }
 
     char tmppath[128];
+    int fd;
 
     snprintf(tmppath, 128, "/sys/class/gpio/gpio%d/value", pin);
+    if (0 != access(tmppath, F_OK)) {
+        fd = open("/sys/class/gpio/export", O_SYNC | O_WRONLY);
+        if (fd < 0) {
+            return NULL;
+        }
 
-    int fd = open("/sys/class/gpio/export", O_SYNC, O_WRONLY);
-    if (fd < 0) {
-        return NULL;
-    }
+        char tmp[16];
+        snprintf(tmp, 16, "%d", pin);
 
-    char tmp[16];
-    snprintf(tmp, 16, "%d", pin);
+        if (write(fd, tmp, 16) < 0) {
+            return NULL;
+        }
 
-    if (write(fd, tmp, 16) < 0) {
-        return NULL;
-    }
-
-    if (close(fd) < 0) {
-        return NULL;
+        if (close(fd) < 0) {
+            return NULL;
+        }
     }
 
     snprintf(tmppath, 128, "/sys/class/gpio/gpio%d", pin);
@@ -77,8 +85,9 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
     }
 
     newdev->pin = pin;
-    newdev->cb = NULL;
-    newdev->int_en = 0;
+    newdev->cb.thread = NULL;
+    newdev->cb.fn = NULL;
+    newdev->int_en = false;
 
     newdev->fd_poll.fd = newdev->fd_val;
     newdev->fd_poll.events = POLLPRI;
@@ -111,16 +120,12 @@ errorafterinit:
 void GPIO_release(GPIO_Handle pin) {
     if (pin != NULL) {
         gpiodev* dev = (gpiodev*)pin;
-        if (dev->cb != NULL) {
-            dev->int_en = 0;
-            if (dev->cb->thread != NULL) {
-                pthread_cancel(*(dev->cb->thread));
-                pthread_join(*(dev->cb->thread), NULL);
-                pthread_mutex_unlock(&(dev->cb->lock));
-                pthread_mutex_destroy(&(dev->cb->lock));
-                free(dev->cb->thread);
-                free(dev->cb);
-                dev->cb = NULL;
+        if (dev->int_en) {
+            dev->int_en = false;
+            if (dev->cb.thread != NULL) {
+                pthread_cancel(*(dev->cb.thread));
+                pthread_join(*(dev->cb.thread), NULL);
+                free(dev->cb.thread);
             }
         }
         free(dev);
@@ -146,17 +151,17 @@ GPIO_state GPIO_read(GPIO_Handle handle) {
         return -1;
     }
     
-    char state[2];
+    char state;
 
     gpiodev* dev = (gpiodev*)handle;
 
     lseek(dev->fd_val, 0, SEEK_SET);
 
-    if (read(dev->fd_val, state, 2) != 2) {
+    if (read(dev->fd_val, &state, 1) != 1) {
         return -1;
     }
 
-    switch(state[0]) {
+    switch(state) {
         case '0':
             return LOW;
         case '1':
@@ -166,12 +171,55 @@ GPIO_state GPIO_read(GPIO_Handle handle) {
     }
 }
 
+int GPIO_setEdge(GPIO_Handle handle, GPIO_edge edge) {
+    gpiodev* dev = (gpiodev*)handle;
+
+    char tmpstr[256] = {0};
+    snprintf(tmpstr, 256, "/sys/class/gpio/gpio%d/edge", dev->pin);
+    int fd = open(tmpstr, O_SYNC | O_WRONLY);
+    if (fd < 0) {
+        return EXIT_FAILURE;
+    }
+
+    char* str = edge_strs[edge];
+    ssize_t r = write(fd, str, strlen(str));
+    if (r < 0) {
+        close(fd);
+        return EXIT_FAILURE;
+    }
+
+    close(fd);
+
+    return EXIT_SUCCESS;
+}
+
 int GPIO_enableInt(GPIO_Handle handle) {
     if (handle == NULL) {
         return EXIT_FAILURE;
     }
 
-    ((gpiodev*)handle)->int_en = 1;
+    gpiodev* dev = (gpiodev*)handle;
+
+    if (dev->int_en) {
+        return EXIT_SUCCESS;
+    }
+
+    pthread_t *pollthread = (pthread_t*)malloc(sizeof(pthread_t));
+
+    pthread_attr_t attr;
+
+    pthread_attr_init(&attr);
+    pthread_attr_setschedpolicy(&attr, SCHED_FIFO);
+
+    dev->cb.thread = pollthread;
+
+    if (0 != pthread_create(pollthread, NULL, _pollthreadfunc, handle)) {
+        free(dev->cb.thread);
+
+        return EXIT_FAILURE;
+    }
+
+    dev->int_en = true;
 
     return EXIT_SUCCESS;
 }
@@ -181,7 +229,14 @@ int GPIO_disableInt(GPIO_Handle handle) {
         return EXIT_FAILURE;
     }
 
-    ((gpiodev*)handle)->int_en = 0;
+    gpiodev* dev = (gpiodev*)handle;
+    dev->int_en = false;
+
+    pthread_cancel(*(dev->cb.thread));
+
+    free(dev->cb.thread);
+
+    dev->cb.thread = NULL;
 
     return EXIT_SUCCESS;
 }
@@ -193,32 +248,12 @@ int GPIO_setCallback(GPIO_Handle handle, GPIO_CallbackFxn fxn) {
 
     gpiodev* dev = (gpiodev*)handle;
 
-    pthread_t *pollthread = (pthread_t*)malloc(sizeof(pthread_t));
-
-    pthread_attr_t attr;
-
-    pthread_attr_init(&attr);
-    pthread_attr_setschedpolicy(&attr, SCHED_FIFO);
-
-    gpiocallback *callback = (gpiocallback*)malloc(sizeof(gpiocallback));
-
-    callback->fn = fxn;
-    callback->thread = pollthread;
-
-    pthread_mutex_init(&callback->lock, NULL);
-    pthread_mutex_lock(&callback->lock);
-
-    dev->cb = callback;
-
-    if (0 == pthread_create(pollthread, NULL, _pollthreadfunc, handle)) {
-        pthread_mutex_lock(&callback->lock);
+    if (dev->int_en == false) {
+        dev->cb.fn = fxn;
     } else {
-        pthread_mutex_unlock(&dev->cb->lock);
-        pthread_mutex_destroy(&dev->cb->lock);
-        free(dev->cb->thread);
-        free(dev->cb);
-
-        return EXIT_FAILURE;
+        dev->int_en = false;
+        dev->cb.fn = fxn;
+        dev->int_en = true;
     }
 
     return EXIT_SUCCESS;
@@ -231,13 +266,10 @@ static void* _pollthreadfunc(void* dev) {
 
     gpiodev* _dev = (gpiodev*)dev;
 
-    pthread_mutex_unlock(&_dev->cb->lock);
-
     int ret;
     char c;
 
     while (1) {
-        // TODO this may cause issues with races
         if (_dev->int_en) {
             // read to clear interrupt
             ret = lseek(_dev->fd_val, 0, SEEK_SET);
@@ -250,7 +282,7 @@ static void* _pollthreadfunc(void* dev) {
                 read(_dev->fd_val, &c, 1);
                 
                 // perform callback
-                _dev->cb->fn();
+                _dev->cb.fn();
             }
         }
     }

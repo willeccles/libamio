@@ -13,6 +13,7 @@
 #define LIBAMIO_UART_H
 
 #include <stdint.h>
+#include <unistd.h>
 
 #ifdef __cplusplus
 extern "C" {

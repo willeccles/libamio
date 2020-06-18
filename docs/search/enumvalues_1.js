@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['high',['HIGH',['../group__LIBAMIOGPIO.html#gga113eb9ea93c94a0ff55198f174d58760a0c3a1dacf94061154b3ee354359c5893',1,'libamio-gpio.h']]]
+  ['both',['BOTH',['../group__LIBAMIOGPIO.html#gga265c89526a51725f6258907755eeab35a627abe5a430420baf29ebe1940a7f2fb',1,'libamio-gpio.h']]]
 ];

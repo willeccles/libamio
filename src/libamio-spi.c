@@ -21,7 +21,7 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
     if (bus < 0 || cs < 0) return NULL;
 
     spidevice* dev = (spidevice*)malloc(sizeof(spidevice));
-    if (dev = NULL) return NULL;
+    if (dev == NULL) return NULL;
 
     dev->bus = bus;
     dev->cs = cs;
@@ -55,30 +55,13 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
         goto errorafterinit;
     }
 
+    // set the SPI speed
     if (-1 == ioctl(dev->fd, SPI_IOC_WR_MAX_SPEED_HZ, &(params->bitrate))) {
         goto errorafterinit;
     }
 
     // set the SPI mode
-    uint8_t mode;
-    switch(params->mode) {
-        case SPI_POL0_PHA0:
-            mode = SPI_MODE_0;
-            break;
-        case SPI_POL0_PHA1:
-            mode = SPI_MODE_1;
-            break;
-        case SPI_POL1_PHA0:
-            mode = SPI_MODE_2;
-            break;
-        case SPI_POL1_PHA1:
-            mode = SPI_MODE_3;
-            break;
-        default:
-            goto errorafterinit;
-    }
-
-    if (-1 == ioctl(dev->fd, SPI_IOC_WR_MODE, &mode)) {
+    if (-1 == ioctl(dev->fd, SPI_IOC_WR_MODE, &(params->mode))) {
         goto errorafterinit;
     }
 
@@ -113,9 +96,24 @@ int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction) {
     };
 
     int r = ioctl(dev->fd, SPI_IOC_MESSAGE(1), &msg);
-    if (r < 1) {
+    if (r < 0) {
         return EXIT_FAILURE;
     }
+
+    return EXIT_SUCCESS;
+}
+
+int SPI_setMode(SPI_Handle handle, SPI_MODE mode) {
+    if (handle == NULL) {
+        return EXIT_FAILURE;
+    }
+
+    int r = ioctl(((spidevice*)handle)->fd, SPI_IOC_WR_MODE, &mode);
+    if (r < 0) {
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
 
 void SPI_close(SPI_Handle handle) {
@@ -128,3 +126,24 @@ void SPI_close(SPI_Handle handle) {
     }
 }
 
+ssize_t SPI_getMaxBufSize() {
+    int fd = open("/sys/module/spidev/parameters/bufsiz", O_RDONLY);
+    if (fd < 0) {
+        return -1;
+    }
+
+    char buf[32] = {0};
+    if (read(fd, buf, 31) < 0) {
+        close(fd);
+        return -1;
+    }
+    
+    close(fd);
+
+    ssize_t val = -1;
+    if (sscanf(buf, "%zd", &val) < 1) {
+        val = -1;
+    }
+
+    return val;
+}

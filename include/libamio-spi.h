@@ -1,18 +1,20 @@
 /*!
- * \file libhwio-spi.h
+ * \file libamio-spi.h
  * \author Will Eccles
  * \date 2019-08-28
  * \brief Defines SPI-related structures and data types.
  *
- * \defgroup LIBHWIOSPI SPI
+ * \defgroup LIBAMIOSPI SPI
  * SPI-related structures, data-types, and functions.
  * \{
  */
 
-#ifndef LIBHWIO_SPI_H
-#define LIBHWIO_SPI_H
+#ifndef LIBAMIO_SPI_H
+#define LIBAMIO_SPI_H
 
 #include <stdint.h>
+#include <unistd.h>
+#include <linux/spi/spidev.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,10 +27,10 @@ typedef void* SPI_Handle;
  * \brief SPI modes.
  */
 typedef enum SPI_MODE {
-    SPI_POL0_PHA0 = 0, //!< SPI mode 0 (polarity 0; phase 0)
-    SPI_POL0_PHA1 = 1, //!< SPI mode 1 (polarity 0; phase 1)
-    SPI_POL1_PHA0 = 2, //!< SPI mode 2 (polarity 1; phase 0)
-    SPI_POL1_PHA1 = 3, //!< SPI mode 3 (polarity 1; phase 1)
+    SPI_POL0_PHA0 = SPI_MODE_0, //!< SPI mode 0 (polarity 0; phase 0)
+    SPI_POL0_PHA1 = SPI_MODE_1, //!< SPI mode 1 (polarity 0; phase 1)
+    SPI_POL1_PHA0 = SPI_MODE_2, //!< SPI mode 2 (polarity 1; phase 0)
+    SPI_POL1_PHA1 = SPI_MODE_3, //!< SPI mode 3 (polarity 1; phase 1)
 } SPI_MODE;
 
 /*!
@@ -37,7 +39,7 @@ typedef enum SPI_MODE {
  * length, which should be less than or equal to #count.
  */
 typedef struct SPI_Transaction {
-    int      count; //!< Number of bytes to transmit+receive
+    size_t   count; //!< Number of bytes to transmit+receive
     uint8_t *rxBuf; //!< Buffer into which data should be written (NULL if you
                     //!< wish to only send but not receive)
     uint8_t *txBuf; //!< Buffer from which to transmit data
@@ -73,14 +75,32 @@ extern SPI_Handle SPI_open(int bus, int cs, SPI_Params* params);
 extern int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction);
 
 /*!
+ * \brief Set the mode of a SPI device.
+ * \param handle a handle to the SPI device to update
+ * \param mode the new mode to set the device to
+ * \return EXIT_SUCCESS if successful, EXIT_FAILURE otherwise.
+ */
+extern int SPI_setMode(SPI_Handle handle, SPI_MODE mode);
+
+/*!
  * \brief Closes a SPI device.
  * \param handle a handle to the SPI device to close
  */
 extern void SPI_close(SPI_Handle handle);
+
+/*!
+ * \brief Gets the maximum buffer size for the SPI driver.
+ * \note This function reads from the filesystem, so you should
+ *       avoid calling it more than once, when possible.
+ *       If this function fails, the caller should assume the
+ *       size is 4096, as that's the default out of the box.
+ * \return The size of the buffer, or -1 on error and sets errno.
+ */
+extern ssize_t SPI_getMaxBufSize();
 
 #ifdef __cplusplus
 } // extern "C"
 #endif
 
 /*! \} */
-#endif // LIBHWIO_SPI_H
+#endif // LIBAMIO_SPI_H
