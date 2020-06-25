@@ -48,11 +48,12 @@ typedef enum UART_BAUD {
 /*!
  * \brief Opens a UART devices and returns a handle to it.
  * \param dev the device to open, such as "/dev/ttyS0"
- * \param baud the baud rate to use
+ * \param baud the baud rate to use (if outside of #UART_BAUD range, will
+ *             be coerced to the nearest neighbor)
  * \return A handle to the UART device. Will exit the program if
  *         an error occurrs.
  */
-extern UART_Handle UART_Open(const char* dev, UART_BAUD baud);
+extern UART_Handle UART_Open(const char* dev, unsigned int baud);
 
 /*!
  * \brief Sends a message over UART.

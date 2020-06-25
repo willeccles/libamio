@@ -138,9 +138,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae33030de5e8c50a482452bd3b3582c01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__LIBAMIOUART.html#ga2ffb08edb77ee6c9a0df118e0bf65351">UART_Handle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOUART.html#gae33030de5e8c50a482452bd3b3582c01">UART_Open</a> (const char *dev, <a class="el" href="group__LIBAMIOUART.html#ga2b50ce1943f24e90a2e2b8fe34f20481">UART_BAUD</a> baud)</td></tr>
-<tr class="memdesc:gae33030de5e8c50a482452bd3b3582c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a UART devices and returns a handle to it.  <a href="#gae33030de5e8c50a482452bd3b3582c01">More...</a><br /></td></tr>
-<tr class="separator:gae33030de5e8c50a482452bd3b3582c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b0b64af593687e76d0228f0c28f1ee1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__LIBAMIOUART.html#ga2ffb08edb77ee6c9a0df118e0bf65351">UART_Handle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOUART.html#ga4b0b64af593687e76d0228f0c28f1ee1">UART_Open</a> (const char *dev, unsigned int baud)</td></tr>
+<tr class="memdesc:ga4b0b64af593687e76d0228f0c28f1ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a UART devices and returns a handle to it.  <a href="#ga4b0b64af593687e76d0228f0c28f1ee1">More...</a><br /></td></tr>
+<tr class="separator:ga4b0b64af593687e76d0228f0c28f1ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga60c667f6fb15bb411026f63732d2ce1a"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOUART.html#ga60c667f6fb15bb411026f63732d2ce1a">UART_Send</a> (<a class="el" href="group__LIBAMIOUART.html#ga2ffb08edb77ee6c9a0df118e0bf65351">UART_Handle</a> dev, const char *msg, size_t len)</td></tr>
 <tr class="memdesc:ga60c667f6fb15bb411026f63732d2ce1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message over UART.  <a href="#ga60c667f6fb15bb411026f63732d2ce1a">More...</a><br /></td></tr>
 <tr class="separator:ga60c667f6fb15bb411026f63732d2ce1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,8 +206,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gae33030de5e8c50a482452bd3b3582c01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae33030de5e8c50a482452bd3b3582c01">&#9670;&nbsp;</a></span>UART_Open()</h2>
+<a id="ga4b0b64af593687e76d0228f0c28f1ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4b0b64af593687e76d0228f0c28f1ee1">&#9670;&nbsp;</a></span>UART_Open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__LIBAMIOUART.html#ga2b50ce1943f24e90a2e2b8fe34f20481">UART_BAUD</a>&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>baud</em>&#160;</td>
         </tr>
         <tr>
@@ -236,13 +236,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dev</td><td>the device to open, such as "/dev/ttyS0" </td></tr>
-    <tr><td class="paramname">baud</td><td>the baud rate to use </td></tr>
+    <tr><td class="paramname">baud</td><td>the baud rate to use (if outside of <a class="el" href="group__LIBAMIOUART.html#ga2b50ce1943f24e90a2e2b8fe34f20481" title="UART baud rate values. ">UART_BAUD</a> range, will be coerced to the nearest neighbor) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A handle to the UART device. Will exit the program if an error occurrs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00046">46</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00049">49</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
 
 </div>
 </div>
@@ -290,7 +290,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes read or -1 if there was an error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00063">63</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00066">66</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
 
 <p class="reference">References <a class="el" href="libamio-uart_8h_source.html#l00045">UART_115200</a>.</p>
 
@@ -339,7 +339,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If successful, <a class="el" href="group__LIBAMIOUART.html#ga60c667f6fb15bb411026f63732d2ce1a" title="Sends a message over UART. ">UART_Send()</a> returns the number of bytes transmitted. If unsuccessful, this function will return -1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00059">59</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-uart_8c_source.html#l00062">62</a> of file <a class="el" href="libamio-uart_8c_source.html">libamio-uart.c</a>.</p>
 
 </div>
 </div>
@@ -348,7 +348,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 18 2020 15:16:37 for LibAMIO by
+    <li class="footer">Generated on Thu Jun 25 2020 08:01:58 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

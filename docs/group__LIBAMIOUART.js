@@ -20,7 +20,7 @@ var group__LIBAMIOUART =
       [ "UART_38400", "group__LIBAMIOUART.html#gga2b50ce1943f24e90a2e2b8fe34f20481a94952b5b2b00216cc519e15cbaad6164", null ],
       [ "UART_115200", "group__LIBAMIOUART.html#gga2b50ce1943f24e90a2e2b8fe34f20481ab16a6475648b11b174e9f4bd0b4c378d", null ]
     ] ],
-    [ "UART_Open", "group__LIBAMIOUART.html#gae33030de5e8c50a482452bd3b3582c01", null ],
+    [ "UART_Open", "group__LIBAMIOUART.html#ga4b0b64af593687e76d0228f0c28f1ee1", null ],
     [ "UART_Read", "group__LIBAMIOUART.html#gaa0eb4909c1b074cf58cf00a9b75037ea", null ],
     [ "UART_Send", "group__LIBAMIOUART.html#ga60c667f6fb15bb411026f63732d2ce1a", null ]
 ];

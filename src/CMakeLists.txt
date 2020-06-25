@@ -6,33 +6,27 @@ set(TARGET_NAME amio)
 # add sources here and include subdirectories' CMakeLists.txt here.
 # This keeps every neat in the top level makefile.
 # Keep this in alphabetical order or you'll be eaten by aliens.
-list(APPEND LIB_SOURCES
+list(APPEND LIBAMIO_SOURCES
     ${CMAKE_CURRENT_LIST_DIR}/libamio-gpio.c
     ${CMAKE_CURRENT_LIST_DIR}/libamio-i2c.c
     ${CMAKE_CURRENT_LIST_DIR}/libamio-spi.c
     ${CMAKE_CURRENT_LIST_DIR}/libamio-uart.c
 )
 
-# add our library target (name is a variable for consistency and
-# easy modification)
-# LIB_SOURCES is defined in the included other CMakeLists.txt files,
-# which should be added to each subdirectory
-add_library(${TARGET_NAME} STATIC ${LIB_SOURCES})
+add_library(${TARGET_NAME} STATIC ${LIBAMIO_SOURCES})
 
 # include directories
-target_include_directories(${TARGET_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include")
-set(CMAKE_LIBRARY_PATH ${CMAKE_FIND_ROOT_PATH}/../armv7at2hf-neon-linux-gnueabi/usr/lib)
-# link with librt, libm (math), and libpthread
-# also find libc since we are going to need that
-file(GLOB LIBC ${CMAKE_SOURCE_DIR}/lib/libc-2.24.so)
-file(GLOB LIBRT ${CMAKE_SOURCE_DIR}/lib/librt-2.24.so)
-file(GLOB LIBM ${CMAKE_SOURCE_DIR}/lib/libm-2.24.so)
-file(GLOB LIBPTHREAD ${CMAKE_SOURCE_DIR}/lib/libpthread-2.24.so)
+target_include_directories(${TARGET_NAME} PUBLIC
+    "${CMAKE_CURRENT_LIST_DIR}"
+    "${CMAKE_CURRENT_LIST_DIR}/../include")
 
-MESSAGE("${CMAKE_FIND_ROOT_PATH}")
-MESSAGE("LIBC: ${LIBC}")
-MESSAGE("LIBRT: ${LIBRT}")
-MESSAGE("LIBPTHREAD: ${LIBPTHREAD}")
-MESSAGE("LIBM: ${LIBM}")
+# link with libc and libm
+find_library(LIBC c)
+find_library(LIBM m)
+find_library(LIBPTHREAD pthread)
+find_library(LIBRT rt)
 
-target_link_libraries(${TARGET_NAME} ${LIBC} ${LIBRT} ${LIBPTHREAD} ${LIBM})
+target_link_libraries(${TARGET_NAME} ${LIBC} ${LIBM} ${LIBRT} ${LIBPTHREAD})
+
+# disable warnings for this target altogether with -w
+target_compile_options(${TARGET_NAME} PRIVATE -w -O3)

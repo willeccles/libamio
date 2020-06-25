@@ -20,7 +20,7 @@ var searchData=
   ['uart_5f9600',['UART_9600',['../group__LIBAMIOUART.html#gga2b50ce1943f24e90a2e2b8fe34f20481ae27f7d0a9b73469b706e70769d0aa42b',1,'libamio-uart.h']]],
   ['uart_5fbaud',['UART_BAUD',['../group__LIBAMIOUART.html#ga2b50ce1943f24e90a2e2b8fe34f20481',1,'libamio-uart.h']]],
   ['uart_5fhandle',['UART_Handle',['../group__LIBAMIOUART.html#ga2ffb08edb77ee6c9a0df118e0bf65351',1,'libamio-uart.h']]],
-  ['uart_5fopen',['UART_Open',['../group__LIBAMIOUART.html#gae33030de5e8c50a482452bd3b3582c01',1,'UART_Open(const char *dev, UART_BAUD baud):&#160;libamio-uart.c'],['../group__LIBAMIOUART.html#gae33030de5e8c50a482452bd3b3582c01',1,'UART_Open(const char *dev, UART_BAUD baud):&#160;libamio-uart.c']]],
+  ['uart_5fopen',['UART_Open',['../group__LIBAMIOUART.html#ga4b0b64af593687e76d0228f0c28f1ee1',1,'UART_Open(const char *dev, unsigned int baud):&#160;libamio-uart.c'],['../group__LIBAMIOUART.html#ga4b0b64af593687e76d0228f0c28f1ee1',1,'UART_Open(const char *dev, unsigned int baud):&#160;libamio-uart.c']]],
   ['uart_5fread',['UART_Read',['../group__LIBAMIOUART.html#gaa0eb4909c1b074cf58cf00a9b75037ea',1,'UART_Read(UART_Handle dev, char *buf, size_t len):&#160;libamio-uart.c'],['../group__LIBAMIOUART.html#gaa0eb4909c1b074cf58cf00a9b75037ea',1,'UART_Read(UART_Handle dev, char *buf, size_t len):&#160;libamio-uart.c']]],
   ['uart_5fsend',['UART_Send',['../group__LIBAMIOUART.html#ga60c667f6fb15bb411026f63732d2ce1a',1,'UART_Send(UART_Handle dev, const char *msg, size_t len):&#160;libamio-uart.c'],['../group__LIBAMIOUART.html#ga60c667f6fb15bb411026f63732d2ce1a',1,'UART_Send(UART_Handle dev, const char *msg, size_t len):&#160;libamio-uart.c']]]
 ];
