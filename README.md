@@ -11,39 +11,47 @@ your toolchain, which you should have already set up.
 This library should be built by adding it to a pre-existing CMake project. For
 example, if your project source tree looks like this:
 
-  myproject/
-    include/
-      myfile.h
-    src/
-      main.c
-      CMakeLists.txt
+```
+myproject/
+  include/
+    myfile.h
+  src/
+    main.c
     CMakeLists.txt
+  CMakeLists.txt
+```
 
 You would add this as a subdirectory (just like src), then in src/CMakeLists.txt
 you would link with target 'amio'. Thus, your tree now looks like this
 (abbreviated):
-  
-  myproject/
-    ...
-    libamio/
-      include/
-        ...
-      src/
-        ...
-        CMakeLists.txt
-      CMakeLists.txt
+
+```  
+myproject/
+  ...
+  libamio/
+    include/
+      ...
     src/
       ...
       CMakeLists.txt
     CMakeLists.txt
+  src/
+    ...
+    CMakeLists.txt
+  CMakeLists.txt
+```
 
 In myproject/CMakeLists.txt, simply add the following:
-  
-  add_subdirectory(libamio)
+
+```cmake
+add_subdirectory(libamio)
+```
 
 Then, in src/CMakeLists.txt, link your binary with the library:
 
-  target_link_libraries(mycooltargetname ... amio ...)
+```cmake
+target_link_libraries(mycooltargetname ... amio ...)
+```
 
 You should be all set to build.
 
