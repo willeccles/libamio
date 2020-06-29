@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LibAMIO: libamio</title>
+<title>LibAMIO: LIBAMIO</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,42 +89,26 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">libamio </div>  </div>
+<div class="title">LIBAMIO </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Simple, efficient IO library for SoCs, including SPI, I2C, GPIO, and UART. This library is targeted directly at ARM Linux-RT targets.</p>
-<p>This library has the goals of being:</p><ul>
-<li>Fast</li>
-<li>Deterministic</li>
-<li>Efficient</li>
-<li>Easy</li>
-</ul>
-<p>This library is particularly aimed at the AM335x-based SoCs, such as the OSD-335x and the BeagleBone Black.</p>
-<h2>Prebuilt Libraries</h2>
-<p>There will be prebuilt libraries on the GitHub Releases page. These will be (as expected) compiled for ARM.</p>
-<h2>Requirements</h2>
-<p>This library is probably not a particularly good one if you are a hobbyist - it requires the Texas Instruments Linux RT SDK to be installed. This is so that the library can be cross compiled.</p>
-<p>This library also requires CMake &gt;= 3.13, preferrably the latest release.</p>
-<h2>Setup</h2>
-<p>For a standard Release build, you can simple do the following:</p>
-<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div><div class="line">cmake ..</div></div><!-- fragment --><h3>Custom TI Linux RT Install Dir</h3>
-<p>The library will automatically attempt to find your TI Linux RT SDK in your home directory, since this is the default location. If you wish to specify a different <em>path</em>, you can do that by modifying CMakeLists.txt, since that was created under the assumption that your path will always be default. However, if you have more than one TI Linux RT SDK installed, or CMake didn't find it somehow, you can specify a version using the <code>TI_SDK_VERSION</code> flag:</p>
-<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build    # assuming you haven&#39;t already made this directory</div><div class="line">cmake -DTI_SDK_VERSION=&quot;06.00.00.07&quot; ..</div></div><!-- fragment --><h3>Creating a Debug Release</h3>
-<p>This is as simple as specifying <code>CMAKE_BUILD_TYPE</code>, just like most other projects:</p>
-<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build    # assuming you haven&#39;t already made this directory</div><div class="line">cmake -DCMAKE_BUILD_TYPE=Debug ..</div></div><!-- fragment --><h2>Building</h2>
-<p>Just like any other CMake project, after you've performed the setup steps above, you can just run <code>make</code>. This will compile a <em>static</em> library, because this avoids copying shared libs to an ARM target or having to compile it on there as well.</p>
-<p>The output from the build can be found in <code>libamio/bin/lib</code>.</p>
-<h2>Documentation</h2>
-<p><b>If you don't want to generate documentation yourself, it's hosted online <a href="https://willeccles.github.io/libamio">here</a>.</b></p>
-<p>If you have Doxygen installed, you can generate documentation using <code>make docs</code> in the build directory. These will be generated in the <code>libamio/docs/html</code> directory. Simply open <code>index.html</code> and you will be in business. If you don't have Doxygen installed, use your preferred package manager to install Doxygen and Graphviz.</p>
-<h2>Library Credits</h2>
-<p>The libraries included in the <code>lib</code> directory are not made by me, nor owned by me. They are copied from an ARM target in order to keep library versions consistent and controlled. This is important for the project it was required for. I do not own them, nor do I take any responsiblity for anything related to them. All credit for those libraries goes to their respective owners. </p>
+<div class="textblock"><p>This library is intended to provide a quick and easy way to do various comms on ARM-based Linux devices. It has been tested and proven on the TI AM3358 platform, but should work equally well on others. It builds to a static library and depends on libc, libm, librt, and libpthread. These should be provided by your toolchain, which you should have already set up.</p>
+<h2>BUILDING</h2>
+<p>This library should be built by adding it to a pre-existing CMake project. For example, if your project source tree looks like this:</p>
+<div class="fragment"><div class="line">myproject/</div><div class="line">  include/</div><div class="line">    myfile.h</div><div class="line">  src/</div><div class="line">    main.c</div><div class="line">    CMakeLists.txt</div><div class="line">  CMakeLists.txt</div></div><!-- fragment --><p>You would add this as a subdirectory (just like src), then in src/CMakeLists.txt you would link with target 'amio'. Thus, your tree now looks like this (abbreviated):</p>
+<div class="fragment"><div class="line">myproject/</div><div class="line">  ...</div><div class="line">  libamio/</div><div class="line">    include/</div><div class="line">      ...</div><div class="line">    src/</div><div class="line">      ...</div><div class="line">      CMakeLists.txt</div><div class="line">    CMakeLists.txt</div><div class="line">  src/</div><div class="line">    ...</div><div class="line">    CMakeLists.txt</div><div class="line">  CMakeLists.txt</div></div><!-- fragment --><p>In myproject/CMakeLists.txt, simply add the following:</p>
+<div class="fragment"><div class="line">add_subdirectory(libamio)</div></div><!-- fragment --><p>Then, in src/CMakeLists.txt, link your binary with the library:</p>
+<div class="fragment"><div class="line">target_link_libraries(mycooltargetname ... amio ...)</div></div><!-- fragment --><p>You should be all set to build.</p>
+<h2>USAGE</h2>
+<p>For more complete docs on the library, see <a href="https://eccles.dev/libamio">https://eccles.dev/libamio</a>.</p>
+<h2>LICENSE</h2>
+<p>This library is released under the Apache-2.0 License. See the LICENSE file distributed with this source for more details. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 25 2020 08:01:58 for LibAMIO by
+    <li class="footer">Generated on Mon Jun 29 2020 11:28:11 for LibAMIO by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mode',['mode',['../structSPI__Params.html#a41c83124637756b338681f24e298e43b',1,'SPI_Params']]]
+  ['int_5fen',['int_en',['../structgpiodev.html#a9fc1bf576a6cb4da8d19e613498b917a',1,'gpiodev']]]
 ];

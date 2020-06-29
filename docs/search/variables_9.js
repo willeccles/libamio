@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wordsize',['wordsize',['../structSPI__Params.html#a8601d0cf1c797bd9c2a7fa20d7d6cbf3',1,'SPI_Params']]],
-  ['writebuf',['writeBuf',['../structI2C__Transaction.html#a15f82555a6dce6261cd89ed02aa72c25',1,'I2C_Transaction']]],
-  ['writecount',['writeCount',['../structI2C__Transaction.html#a2c34e9a3e1b5f14c4c86fc86e6b6d880',1,'I2C_Transaction']]]
+  ['timeout',['timeout',['../structI2C__Transaction.html#aad5a9ebc7f76d95475881486de486d6c',1,'I2C_Transaction']]],
+  ['txbuf',['txBuf',['../structSPI__Transaction.html#ad2cb124bb8e273fd6be472faa91399cb',1,'SPI_Transaction']]],
+  ['type',['type',['../structSerial__Params.html#ae63e5c45dc5ebb40527087f7d699a82f',1,'Serial_Params']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['libamio',['libamio',['../index.html',1,'']]]
+  ['libamio',['LIBAMIO',['../index.html',1,'']]]
 ];

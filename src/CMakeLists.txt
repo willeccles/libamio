@@ -9,8 +9,8 @@ set(TARGET_NAME amio)
 list(APPEND LIBAMIO_SOURCES
     ${CMAKE_CURRENT_LIST_DIR}/libamio-gpio.c
     ${CMAKE_CURRENT_LIST_DIR}/libamio-i2c.c
+    ${CMAKE_CURRENT_LIST_DIR}/libamio-serial.c
     ${CMAKE_CURRENT_LIST_DIR}/libamio-spi.c
-    ${CMAKE_CURRENT_LIST_DIR}/libamio-uart.c
 )
 
 add_library(${TARGET_NAME} STATIC ${LIBAMIO_SOURCES})
