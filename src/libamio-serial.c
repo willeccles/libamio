@@ -57,7 +57,7 @@ static SERIAL_BAUD get_baud_value(Serial_Params* params);
 int Serial_Open(Serial_Device* device, Serial_Params* params) {
     device->_fd = open(params->dev, O_RDWR | O_NOCTTY | O_SYNC | O_NONBLOCK); // no CTTY makes sure the tty doesn't start controlling this program
     if (device->_fd < 0) {
-        return -1; 
+        return -1;
     }
 
     device->_type = params->type;
@@ -95,7 +95,7 @@ static int set_interface_attribs_raw(int fd, SERIAL_BAUD speed) {
     }
 
     cfmakeraw(&tty);
-    
+
     cfsetospeed(&tty, BAUDS[speed]);
     cfsetispeed(&tty, BAUDS[speed]);
 
@@ -118,15 +118,19 @@ static int set_interface_attribs_rs485(int fd, Serial_Params* params) {
     // enable RS485 mode
     rs485conf.flags |= SER_RS485_ENABLED;
 
-    // RTS inactive when sending
+    // default to RTS inactive when sending
     rs485conf.flags &= ~(SER_RS485_RTS_ON_SEND);
     // change if user specified
-    rs485conf.flags |= params->rs485_RTSHighOnSend * (SER_RS485_RTS_ON_SEND);
+    if (params->rs485_RTSHighOnSend) {
+        rs485conf.flags |= SER_RS485_RTS_ON_SEND;
+    }
 
-    // RTS inactive after sending
+    // default to RTS inactive after sending
     rs485conf.flags &= ~(SER_RS485_RTS_AFTER_SEND);
     // change if user specified
-    rs485conf.flags |= params->rs485_RTSHighAfterSend * (SER_RS485_RTS_AFTER_SEND);
+    if (params->rs485_RTSHighAfterSend) {
+        rs485conf.flags |= SER_RS485_RTS_AFTER_SEND;
+    }
 
     // don't receive while sending
     rs485conf.flags &= ~(SER_RS485_RX_DURING_TX);
