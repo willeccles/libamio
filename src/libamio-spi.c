@@ -34,7 +34,7 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
         return NULL;
     }
 
-    dev->fd = open(devpath, O_SYNC | O_RDWR);
+    dev->fd = open(devpath, O_SYNC | O_RDWR | O_CLOEXEC);
 
     if (dev->fd < 0) {
         free(dev);
@@ -45,7 +45,7 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
     if (params->wordsize == 0) {
         goto errorafterinit;
     }
-    
+
     if (-1 == ioctl(dev->fd, SPI_IOC_WR_BITS_PER_WORD, &(params->wordsize))) {
         goto errorafterinit;
     }
@@ -61,7 +61,7 @@ SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
     }
 
     // set the SPI mode
-    if (-1 == ioctl(dev->fd, SPI_IOC_WR_MODE, &(params->mode))) {
+    if (-1 == ioctl(dev->fd, SPI_IOC_WR_MODE32, &(params->mode))) {
         goto errorafterinit;
     }
 
@@ -137,7 +137,7 @@ ssize_t SPI_getMaxBufSize() {
         close(fd);
         return -1;
     }
-    
+
     close(fd);
 
     ssize_t val = -1;

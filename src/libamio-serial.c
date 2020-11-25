@@ -1,3 +1,4 @@
+#define _DEFAULT_SOURCE
 #include <errno.h>
 #include <fcntl.h>
 #include <linux/ioctl.h>
@@ -55,7 +56,7 @@ static int set_interface_attribs_rs485(int fd, Serial_Params* params);
 static SERIAL_BAUD get_baud_value(Serial_Params* params);
 
 int Serial_Open(Serial_Device* device, Serial_Params* params) {
-    device->_fd = open(params->dev, O_RDWR | O_NOCTTY | O_SYNC | O_NONBLOCK); // no CTTY makes sure the tty doesn't start controlling this program
+    device->_fd = open(params->dev, O_RDWR | O_NOCTTY | O_SYNC | O_NONBLOCK | O_CLOEXEC); // no CTTY makes sure the tty doesn't start controlling this program
     if (device->_fd < 0) {
         return -1;
     }
@@ -94,15 +95,19 @@ static int set_interface_attribs_raw(int fd, SERIAL_BAUD speed) {
         return -1;
     }
 
-    cfmakeraw(&tty);
-
     cfsetospeed(&tty, BAUDS[speed]);
     cfsetispeed(&tty, BAUDS[speed]);
+
+    tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL
+            | IXON);
 
     tty.c_cflag &= ~(PARENB | CSTOPB | CSIZE | CRTSCTS);
     tty.c_cflag |= (CLOCAL | CREAD | CS8);
 
+    tty.c_lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
+
     tty.c_oflag &= ~OPOST;
+
     tty.c_cc[VMIN] = 0;
     tty.c_cc[VTIME] = 5;
 
@@ -113,7 +118,7 @@ static int set_interface_attribs_raw(int fd, SERIAL_BAUD speed) {
 }
 
 static int set_interface_attribs_rs485(int fd, Serial_Params* params) {
-    struct serial_rs485 rs485conf;
+    struct serial_rs485 rs485conf = {0};
 
     // enable RS485 mode
     rs485conf.flags |= SER_RS485_ENABLED;

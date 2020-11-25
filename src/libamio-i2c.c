@@ -39,7 +39,7 @@ I2C_Handle I2C_open(uint8_t devnum) {
         return NULL;
     }
 
-    dev->fd = open(devpath, O_SYNC | O_RDWR);
+    dev->fd = open(devpath, O_SYNC | O_RDWR | O_CLOEXEC);
 
     if (dev->fd < 0) {
         free(dev);

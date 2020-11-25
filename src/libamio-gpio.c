@@ -36,9 +36,6 @@ char* edge_strs[] = { "none", "rising", "falling", "both" };
 // function run by the polling threads
 static void* _pollthreadfunc(void* dev);
 
-// set the edge for a pin
-static int set_edge(int pin, char* edgestr);
-
 GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
     if (direction != INPUT && direction != OUTPUT) {
         return NULL;
@@ -49,7 +46,7 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
 
     snprintf(tmppath, 128, "/sys/class/gpio/gpio%d/value", pin);
     if (0 != access(tmppath, F_OK)) {
-        fd = open("/sys/class/gpio/export", O_SYNC | O_WRONLY);
+        fd = open("/sys/class/gpio/export", O_SYNC | O_WRONLY | O_CLOEXEC);
         if (fd < 0) {
             return NULL;
         }
@@ -79,7 +76,7 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
 
     snprintf(tmppath, 128, "/sys/class/gpio/gpio%d/value", pin);
 
-    newdev->fd_val = open(tmppath, O_SYNC | O_RDWR);
+    newdev->fd_val = open(tmppath, O_SYNC | O_RDWR | O_CLOEXEC);
     if (newdev->fd_val < 0) {
         goto errorafterinit;
     }
@@ -96,11 +93,11 @@ GPIO_Handle GPIO_initpin(unsigned int pin, GPIO_direction direction) {
     // set the direction of the pin
 
     snprintf(tmppath, 128, "/sys/class/gpio/gpio%d/direction", newdev->pin);
-    fd = open(tmppath, O_SYNC | O_WRONLY);
+    fd = open(tmppath, O_SYNC | O_WRONLY | O_CLOEXEC);
     if (fd < 0) {
         goto errorafterinit;
     }
-    
+
     if (write(fd, direction_strs[direction], strlen(direction_strs[direction])) < 0) {
         close(fd);
         goto errorafterinit;
@@ -150,7 +147,7 @@ GPIO_state GPIO_read(GPIO_Handle handle) {
     if (handle == NULL) {
         return -1;
     }
-    
+
     char state;
 
     gpiodev* dev = (gpiodev*)handle;
@@ -176,7 +173,7 @@ int GPIO_setEdge(GPIO_Handle handle, GPIO_edge edge) {
 
     char tmpstr[256] = {0};
     snprintf(tmpstr, 256, "/sys/class/gpio/gpio%d/edge", dev->pin);
-    int fd = open(tmpstr, O_SYNC | O_WRONLY);
+    int fd = open(tmpstr, O_SYNC | O_WRONLY | O_CLOEXEC);
     if (fd < 0) {
         return EXIT_FAILURE;
     }
@@ -280,7 +277,7 @@ static void* _pollthreadfunc(void* dev) {
             if (ret == 1 && _dev->fd_poll.revents & POLLPRI) {
                 // clear interrupt
                 read(_dev->fd_val, &c, 1);
-                
+
                 // perform callback
                 _dev->cb.fn();
             }

@@ -8,52 +8,29 @@ your toolchain, which you should have already set up.
 
 ## BUILDING
 
-This library should be built by adding it to a pre-existing CMake project. For
-example, if your project source tree looks like this:
+This library can be build with the included Makefile. To build both a static
+library (.a) and a shared library (.so), you can run `make` with no arguments.
+To build only one or the other, you can do either `make shared` or `make
+static`. Note that by default, the shared library is statically linked with
+libc. If you wish to dynamically link, you can edit the Makefile and remove
+`-static` from `LDFLAGS`.
 
-```
-myproject/
-  include/
-    myfile.h
-  src/
-    main.c
-    CMakeLists.txt
-  CMakeLists.txt
-```
+### Cross-compiling
 
-You would add this as a subdirectory (just like src), then in src/CMakeLists.txt
-you would link with target 'amio'. Thus, your tree now looks like this
-(abbreviated):
+If you are cross-compiling for another target, you can specify `CROSS_COMPILE`
+as a prefix for the C compiler, linker, and `ar`. For example, if your target
+compiler is `arm-linux-gnueabihf-gcc`, you would do `make
+CROSS_COMPILE=arm-linux-gnueabihf-` (note the trailing `-`).
 
-```  
-myproject/
-  ...
-  libamio/
-    include/
-      ...
-    src/
-      ...
-      CMakeLists.txt
-    CMakeLists.txt
-  src/
-    ...
-    CMakeLists.txt
-  CMakeLists.txt
-```
+If your host system's `CC` environment variable is clang, you will also need to
+specify `CC=gcc` in the previous example so that make doesn't look for
+`arm-linux-gnueabihf-clang`.
 
-In myproject/CMakeLists.txt, simply add the following:
+### Building Documentation
 
-```cmake
-add_subdirectory(libamio)
-```
-
-Then, in src/CMakeLists.txt, link your binary with the library:
-
-```cmake
-target_link_libraries(mycooltargetname ... amio ...)
-```
-
-You should be all set to build.
+If you need to build the documentation (which should only be true if you are
+contributing), you can do `make docs` assuming you have Doxygen, GraphViz, and
+some fonts installed.
 
 ## USAGE
 
