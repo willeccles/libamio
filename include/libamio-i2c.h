@@ -22,16 +22,16 @@ extern "C" {
  * \brief Contains information related to an I2C transaction.
  */
 typedef struct I2C_Transaction {
-    int         timeout;        //!< The timeout for this transaction (milliseconds)
-                                //!< \note Try to keep this to multiples of 10!
-    uint8_t     slaveAddress;   //!< The address for the slave used in this transaction
-                                //!< \note This doesn't need to be shifted - simply
-                                //!<       put in the 7-bit address (i.e. 0x40) as the
-                                //!<       documentation lists it.
-    uint16_t    writeCount;     //!< The number of bytes to write
-    uint16_t    readCount;      //!< The number of bytes to read
-    uint8_t*    writeBuf;       //!< The buffer to write data from
-    uint8_t*    readBuf;        //!< The buffer to read data into
+  int         timeout;        //!< The timeout for this transaction (milliseconds)
+  //!< \note Try to keep this to multiples of 10!
+  uint8_t     slaveAddress;   //!< The address for the slave used in this transaction
+  //!< \note This doesn't need to be shifted - simply
+  //!<       put in the 7-bit address (i.e. 0x40) as the
+  //!<       documentation lists it.
+  uint16_t    writeCount;     //!< The number of bytes to write
+  uint16_t    readCount;      //!< The number of bytes to read
+  uint8_t*    writeBuf;       //!< The buffer to write data from
+  uint8_t*    readBuf;        //!< The buffer to read data into
 } I2C_Transaction;
 
 //! A handle to an I2C device.

@@ -27,10 +27,10 @@ typedef void* SPI_Handle;
  * \brief SPI modes.
  */
 typedef enum SPI_MODE {
-    SPI_POL0_PHA0 = SPI_MODE_0, //!< SPI mode 0 (polarity 0; phase 0)
-    SPI_POL0_PHA1 = SPI_MODE_1, //!< SPI mode 1 (polarity 0; phase 1)
-    SPI_POL1_PHA0 = SPI_MODE_2, //!< SPI mode 2 (polarity 1; phase 0)
-    SPI_POL1_PHA1 = SPI_MODE_3, //!< SPI mode 3 (polarity 1; phase 1)
+  SPI_POL0_PHA0 = SPI_MODE_0, //!< SPI mode 0 (polarity 0; phase 0)
+  SPI_POL0_PHA1 = SPI_MODE_1, //!< SPI mode 1 (polarity 0; phase 1)
+  SPI_POL1_PHA0 = SPI_MODE_2, //!< SPI mode 2 (polarity 1; phase 0)
+  SPI_POL1_PHA1 = SPI_MODE_3, //!< SPI mode 3 (polarity 1; phase 1)
 } SPI_MODE;
 
 /*!
@@ -39,19 +39,19 @@ typedef enum SPI_MODE {
  * length, which should be less than or equal to #count.
  */
 typedef struct SPI_Transaction {
-    size_t   count; //!< Number of bytes to transmit+receive
-    uint8_t *rxBuf; //!< Buffer into which data should be written (NULL if you
-                    //!< wish to only send but not receive)
-    uint8_t *txBuf; //!< Buffer from which to transmit data
+  size_t   count; //!< Number of bytes to transmit+receive
+  uint8_t *rxBuf; //!< Buffer into which data should be written (NULL if you
+  //!< wish to only send but not receive)
+  uint8_t *txBuf; //!< Buffer from which to transmit data
 } SPI_Transaction;
 
 /*!
  * \brief Wrapper SPI params struct.
  */
 typedef struct SPI_Params {
-    uint32_t    bitrate;    //!< Bitrate in Hz
-    uint8_t     wordsize;   //!< Word size in bits (use 8)
-    SPI_MODE    mode;       //!< Frame format (aka SPI mode)
+  uint32_t    bitrate;    //!< Bitrate in Hz
+  uint8_t     wordsize;   //!< Word size in bits (use 8)
+  SPI_MODE    mode;       //!< Frame format (aka SPI mode)
 } SPI_Params;
 
 /*!

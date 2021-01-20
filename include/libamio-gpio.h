@@ -23,28 +23,28 @@ extern "C" {
  * \brief States for GPIO pins.
  */
 typedef enum {
-    LOW = 0,        //!< Pin state is LOW
-    HIGH = 1,       //!< Pin state is HIGH
-    ACTIVE = HIGH,  //!< Pin state is HIGH
-    INACTIVE = LOW, //!< Pin state is LOW
+  LOW = 0,        //!< Pin state is LOW
+  HIGH = 1,       //!< Pin state is HIGH
+  ACTIVE = HIGH,  //!< Pin state is HIGH
+  INACTIVE = LOW, //!< Pin state is LOW
 } GPIO_state;
 
 /*!
  * \brief Direction options for GPIO pins.
  */
 typedef enum {
-    INPUT,      //!< Pin is an input
-    OUTPUT,     //!< Pin is an output
+  INPUT,      //!< Pin is an input
+  OUTPUT,     //!< Pin is an output
 } GPIO_direction;
 
 /*!
  * \brief Valid edges for interrupts.
  */
 typedef enum {
-    NONE,       //!< No interrupts
-    RISING,     //!< Interrupts on rising edges
-    FALLING,    //!< Interrupts on falling edges
-    BOTH,       //!< Interrupts on rising and falling edges
+  NONE,       //!< No interrupts
+  RISING,     //!< Interrupts on rising edges
+  FALLING,    //!< Interrupts on falling edges
+  BOTH,       //!< Interrupts on rising and falling edges
 } GPIO_edge;
 
 //! Handle to a GPIO pin.
