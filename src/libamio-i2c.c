@@ -79,7 +79,7 @@ int I2C_transfer(I2C_Handle handle, I2C_Transaction* transaction) {
   // start by sending data if necessary
   if (transaction->writeCount) {
     msg = (struct i2c_msg){
-      .addr = transaction->slaveAddress >> 1,
+      .addr = transaction->slaveAddress,
           .flags = 0,
           .len = transaction->writeCount,
           .buf = transaction->writeBuf,
@@ -92,7 +92,7 @@ int I2C_transfer(I2C_Handle handle, I2C_Transaction* transaction) {
 
   if (transaction->readCount) {
     msg = (struct i2c_msg){
-      .addr = transaction->slaveAddress >> 1,
+      .addr = transaction->slaveAddress,
           .flags = I2C_M_RD,
           .len = transaction->readCount,
           .buf = transaction->readBuf,
