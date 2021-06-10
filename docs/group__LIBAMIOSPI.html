@@ -135,6 +135,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gac3c109ae62550a9db2acdcf2d99a02bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__LIBAMIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1">SPI_Handle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc">SPI_open</a> (int bus, int cs, <a class="el" href="structSPI__Params.html">SPI_Params</a> *params)</td></tr>
 <tr class="memdesc:gac3c109ae62550a9db2acdcf2d99a02bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a SPI device for use.  <a href="group__LIBAMIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc">More...</a><br /></td></tr>
 <tr class="separator:gac3c109ae62550a9db2acdcf2d99a02bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf664a10f1f6e21e2f5213963874ae49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__LIBAMIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1">SPI_Handle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOSPI.html#gadf664a10f1f6e21e2f5213963874ae49">SPI_open_path</a> (const char *path, <a class="el" href="structSPI__Params.html">SPI_Params</a> *params)</td></tr>
+<tr class="memdesc:gadf664a10f1f6e21e2f5213963874ae49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a SPI device by specifying the full file path.  <a href="group__LIBAMIOSPI.html#gadf664a10f1f6e21e2f5213963874ae49">More...</a><br /></td></tr>
+<tr class="separator:gadf664a10f1f6e21e2f5213963874ae49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7c5fe6e8167f725ec9bb0454d3a25800"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800">SPI_transfer</a> (<a class="el" href="group__LIBAMIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1">SPI_Handle</a> handle, <a class="el" href="structSPI__Transaction.html">SPI_Transaction</a> *transaction)</td></tr>
 <tr class="memdesc:ga7c5fe6e8167f725ec9bb0454d3a25800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer data over a SPI bus.  <a href="group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800">More...</a><br /></td></tr>
 <tr class="separator:ga7c5fe6e8167f725ec9bb0454d3a25800"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +207,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00119">119</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00129">129</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
 </div>
 </div>
@@ -227,7 +230,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This function reads from the filesystem, so you should avoid calling it more than once, when possible. If this function fails, the caller should assume the size is 4096, as that's the default out of the box. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The size of the buffer, or -1 on error and sets errno. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00129">129</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00139">139</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
 </div>
 </div>
@@ -276,7 +279,51 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00020">20</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
+<p class="reference">References <a class="el" href="libamio-spi_8c_source.html#l00035">SPI_open_path()</a>.</p>
+
+</div>
+</div>
+<a id="gadf664a10f1f6e21e2f5213963874ae49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadf664a10f1f6e21e2f5213963874ae49">&#9670;&nbsp;</a></span>SPI_open_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__LIBAMIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1">SPI_Handle</a> SPI_open_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSPI__Params.html">SPI_Params</a> *&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open a SPI device by specifying the full file path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the SPI device path (e.g. "/dev/spidev0.1") </td></tr>
+    <tr><td class="paramname">params</td><td>a pointer to the parameters for the SPI device </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the device opened or NULL or error. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00035">35</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
+
 <p class="reference">References <a class="el" href="libamio-spi_8h_source.html#l00052">SPI_Params::bitrate</a>, <a class="el" href="libamio-spi_8h_source.html#l00054">SPI_Params::mode</a>, and <a class="el" href="libamio-spi_8h_source.html#l00053">SPI_Params::wordsize</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="libamio-spi_8c_source.html#l00020">SPI_open()</a>.</p>
 
 </div>
 </div>
@@ -316,7 +363,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS if successful, EXIT_FAILURE otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00106">106</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00116">116</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
 </div>
 </div>
@@ -356,7 +403,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EXIT_SUCCESS if successful, else EXIT_FAILURE. If the transaction's <code>count</code> value is 0, this will return EXIT_SUCCESS, because technically there was no error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00078">78</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libamio-spi_8c_source.html#l00088">88</a> of file <a class="el" href="libamio-spi_8c_source.html">libamio-spi.c</a>.</p>
 
 <p class="reference">References <a class="el" href="libamio-spi_8h_source.html#l00042">SPI_Transaction::count</a>, <a class="el" href="libamio-spi_8h_source.html#l00043">SPI_Transaction::rxBuf</a>, and <a class="el" href="libamio-spi_8h_source.html#l00045">SPI_Transaction::txBuf</a>.</p>
 
@@ -367,7 +414,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 6 2021 09:38:21 for LibAMIO by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jun 10 2021 12:21:36 for LibAMIO by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

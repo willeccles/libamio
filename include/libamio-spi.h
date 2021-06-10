@@ -64,6 +64,14 @@ typedef struct SPI_Params {
 extern SPI_Handle SPI_open(int bus, int cs, SPI_Params* params);
 
 /*!
+ * \brief Open a SPI device by specifying the full file path.
+ * \param path the SPI device path (e.g. "/dev/spidev0.1")
+ * \param params a pointer to the parameters for the SPI device
+ * \return Handle to the device opened or NULL or error.
+ */
+extern SPI_Handle SPI_open_path(const char* path, SPI_Params* params);
+
+/*!
  * \brief Transfer data over a SPI bus.
  * \param handle a handle to the SPI device to transmit data with
  * \param transaction a pointer to the SPI transaction to make

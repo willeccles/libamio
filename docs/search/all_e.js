@@ -18,13 +18,14 @@ var searchData=
   ['spi_5fhandle_86',['SPI_Handle',['../group__LIBAMIOSPI.html#gac1f57c64d919cab3e6f4565f1c9df8d1',1,'libamio-spi.h']]],
   ['spi_5fmode_87',['SPI_MODE',['../group__LIBAMIOSPI.html#gae506139af46f1328f631ddacd54af96d',1,'libamio-spi.h']]],
   ['spi_5fopen_88',['SPI_open',['../group__LIBAMIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc',1,'SPI_open(int bus, int cs, SPI_Params *params):&#160;libamio-spi.c']]],
-  ['spi_5fparams_89',['SPI_Params',['../structSPI__Params.html',1,'']]],
-  ['spi_5fpol0_5fpha0_90',['SPI_POL0_PHA0',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da0396d8c01166ff94e94e0c200261eba3',1,'libamio-spi.h']]],
-  ['spi_5fpol0_5fpha1_91',['SPI_POL0_PHA1',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da340efc6d0f6f3b5be1151444c15faabf',1,'libamio-spi.h']]],
-  ['spi_5fpol1_5fpha0_92',['SPI_POL1_PHA0',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96dace88daceb628498715aeda698541c95c',1,'libamio-spi.h']]],
-  ['spi_5fpol1_5fpha1_93',['SPI_POL1_PHA1',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da4441729b292511628cb1e9f102da9166',1,'libamio-spi.h']]],
-  ['spi_5fsetmode_94',['SPI_setMode',['../group__LIBAMIOSPI.html#ga3fccdef658be87847bb5dc6300796d3a',1,'SPI_setMode(SPI_Handle handle, SPI_MODE mode):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#ga3fccdef658be87847bb5dc6300796d3a',1,'SPI_setMode(SPI_Handle handle, SPI_MODE mode):&#160;libamio-spi.c']]],
-  ['spi_5ftransaction_95',['SPI_Transaction',['../structSPI__Transaction.html',1,'']]],
-  ['spi_5ftransfer_96',['SPI_transfer',['../group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c']]],
-  ['spidevice_97',['spidevice',['../structspidevice.html',1,'']]]
+  ['spi_5fopen_5fpath_89',['SPI_open_path',['../group__LIBAMIOSPI.html#gadf664a10f1f6e21e2f5213963874ae49',1,'SPI_open_path(const char *path, SPI_Params *params):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#gadf664a10f1f6e21e2f5213963874ae49',1,'SPI_open_path(const char *path, SPI_Params *params):&#160;libamio-spi.c']]],
+  ['spi_5fparams_90',['SPI_Params',['../structSPI__Params.html',1,'']]],
+  ['spi_5fpol0_5fpha0_91',['SPI_POL0_PHA0',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da0396d8c01166ff94e94e0c200261eba3',1,'libamio-spi.h']]],
+  ['spi_5fpol0_5fpha1_92',['SPI_POL0_PHA1',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da340efc6d0f6f3b5be1151444c15faabf',1,'libamio-spi.h']]],
+  ['spi_5fpol1_5fpha0_93',['SPI_POL1_PHA0',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96dace88daceb628498715aeda698541c95c',1,'libamio-spi.h']]],
+  ['spi_5fpol1_5fpha1_94',['SPI_POL1_PHA1',['../group__LIBAMIOSPI.html#ggae506139af46f1328f631ddacd54af96da4441729b292511628cb1e9f102da9166',1,'libamio-spi.h']]],
+  ['spi_5fsetmode_95',['SPI_setMode',['../group__LIBAMIOSPI.html#ga3fccdef658be87847bb5dc6300796d3a',1,'SPI_setMode(SPI_Handle handle, SPI_MODE mode):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#ga3fccdef658be87847bb5dc6300796d3a',1,'SPI_setMode(SPI_Handle handle, SPI_MODE mode):&#160;libamio-spi.c']]],
+  ['spi_5ftransaction_96',['SPI_Transaction',['../structSPI__Transaction.html',1,'']]],
+  ['spi_5ftransfer_97',['SPI_transfer',['../group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c'],['../group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800',1,'SPI_transfer(SPI_Handle handle, SPI_Transaction *transaction):&#160;libamio-spi.c']]],
+  ['spidevice_98',['spidevice',['../structspidevice.html',1,'']]]
 ];

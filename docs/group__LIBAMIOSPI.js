@@ -20,6 +20,7 @@ var group__LIBAMIOSPI =
     [ "SPI_close", "group__LIBAMIOSPI.html#ga0e3448b30b88609fa120915e49560601", null ],
     [ "SPI_getMaxBufSize", "group__LIBAMIOSPI.html#ga764bdd8e944bde95c6e02301d4bfabde", null ],
     [ "SPI_open", "group__LIBAMIOSPI.html#gac3c109ae62550a9db2acdcf2d99a02bc", null ],
+    [ "SPI_open_path", "group__LIBAMIOSPI.html#gadf664a10f1f6e21e2f5213963874ae49", null ],
     [ "SPI_setMode", "group__LIBAMIOSPI.html#ga3fccdef658be87847bb5dc6300796d3a", null ],
     [ "SPI_transfer", "group__LIBAMIOSPI.html#ga7c5fe6e8167f725ec9bb0454d3a25800", null ]
 ];

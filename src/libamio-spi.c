@@ -20,21 +20,31 @@ typedef struct {
 SPI_Handle SPI_open(int bus, int cs, SPI_Params* params) {
   if (bus < 0 || cs < 0) return NULL;
 
+  char devpath[35];
+  snprintf(devpath, 35, "/dev/spidev%d.%d", bus, cs);
+
+  spidevice* dev = SPI_open_path(devpath, params);
+  if (dev) {
+    dev->bus = bus;
+    dev->cs = cs;
+  }
+
+  return (SPI_Handle)dev;
+}
+
+SPI_Handle SPI_open_path(const char* path, SPI_Params* params) {
   spidevice* dev = (spidevice*)malloc(sizeof(spidevice));
   if (dev == NULL) return NULL;
 
-  dev->bus = bus;
-  dev->cs = cs;
+  dev->bus = -1;
+  dev->cs = -1;
 
-  char devpath[35];
-  snprintf(devpath, 35, "/dev/spidev%d.%d", dev->bus, dev->cs);
-
-  if (EXIT_SUCCESS != access(devpath, F_OK)) {
+  if (EXIT_SUCCESS != access(path, F_OK)) {
     free(dev);
     return NULL;
   }
 
-  dev->fd = open(devpath, O_SYNC | O_RDWR | O_CLOEXEC);
+  dev->fd = open(path, O_SYNC | O_RDWR | O_CLOEXEC);
 
   if (dev->fd < 0) {
     free(dev);
