@@ -10,9 +10,9 @@ STATICLIB = $(BUILDDIR)/libamio.a
 SHAREDLIB = $(BUILDDIR)/libamio.so
 
 # allow for cross compilation
-CC := $(CROSS_COMPILE)$(CC)
-LD := $(CROSS_COMPILE)$(LD)
-AR = $(CROSS_COMPILE)ar
+_CC := $(CROSS_COMPILE)$(CC)
+_LD := $(CROSS_COMPILE)$(LD)
+_AR := $(CROSS_COMPILE)ar
 
 CFLAGS += -O3 -std=c99 -fPIC -Wall -Werror -pedantic
 CPPFLAGS += -D_XOPEN_SOURCE=700 -I$(INCDIR) -MMD -MP
@@ -27,15 +27,15 @@ shared: $(SHAREDLIB)
 static: $(STATICLIB)
 
 $(STATICLIB): $(OBJ)
-	$(AR) -crs $@ $?
+	$(_AR) -crs $@ $?
 
 $(SHAREDLIB): $(OBJ)
-	$(LD) $(LDFLAGS) -shared -o $@ $?
+	$(_LD) $(LDFLAGS) -shared -o $@ $?
 
 -include $(DEP)
 
 $(BUILDDIR)/%.c.o: $(SRCDIR)/%.c | $(BUILDDIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $?
+	$(_CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $?
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
