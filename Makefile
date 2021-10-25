@@ -1,6 +1,6 @@
 SRCDIR = src
 INCDIR = include
-BUILDDIR = build
+BUILDDIR ?= build
 
 SRC = $(wildcard $(SRCDIR)/*.c)
 OBJ = $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%.o,$(SRC))
