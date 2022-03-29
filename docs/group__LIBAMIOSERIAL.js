@@ -55,9 +55,9 @@ var group__LIBAMIOSERIAL =
     [ "Serial_Open", "group__LIBAMIOSERIAL.html#ga23bd80a987f964117773be0c59515879", null ],
     [ "Serial_Read", "group__LIBAMIOSERIAL.html#ga5f39b1f36b97b02b78c07aa63fd6aa22", null ],
     [ "Serial_Send", "group__LIBAMIOSERIAL.html#ga9ea3de70cb7f0648ba76778b59c6898a", null ],
-    [ "baud", "group__LIBAMIOSERIAL.html#ga47c1af908ea595a6511aa196b01c2a05", null ],
-    [ "dev", "group__LIBAMIOSERIAL.html#ga413cba82dad6c35ba4b69b8590e46bca", null ],
-    [ "rs485_RTSHighAfterSend", "group__LIBAMIOSERIAL.html#ga042db3126b8fa050396de8fd62bbf0b5", null ],
-    [ "rs485_RTSHighOnSend", "group__LIBAMIOSERIAL.html#gaed051428103fa00b06ff865bf2104260", null ],
-    [ "type", "group__LIBAMIOSERIAL.html#gae63e5c45dc5ebb40527087f7d699a82f", null ]
+    [ "Serial_Params::baud", "group__LIBAMIOSERIAL.html#ga47c1af908ea595a6511aa196b01c2a05", null ],
+    [ "Serial_Params::dev", "group__LIBAMIOSERIAL.html#ga413cba82dad6c35ba4b69b8590e46bca", null ],
+    [ "Serial_Params::rs485_RTSHighAfterSend", "group__LIBAMIOSERIAL.html#ga042db3126b8fa050396de8fd62bbf0b5", null ],
+    [ "Serial_Params::rs485_RTSHighOnSend", "group__LIBAMIOSERIAL.html#gaed051428103fa00b06ff865bf2104260", null ],
+    [ "Serial_Params::type", "group__LIBAMIOSERIAL.html#gae63e5c45dc5ebb40527087f7d699a82f", null ]
 ];
