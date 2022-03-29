@@ -43,6 +43,7 @@ typedef struct SPI_Transaction {
   uint8_t *rxBuf; //!< Buffer into which data should be written (NULL if you
   //!< wish to only send but not receive)
   uint8_t *txBuf; //!< Buffer from which to transmit data
+  uint32_t speed_hz; //!< Temporarily override bitrate for one transaction
 } SPI_Transaction;
 
 /*!

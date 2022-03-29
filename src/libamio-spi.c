@@ -101,8 +101,9 @@ int SPI_transfer(SPI_Handle handle, SPI_Transaction* transaction) {
   // since making .rx_buf == NULL already does this for us
   struct spi_ioc_transfer msg = (struct spi_ioc_transfer){
     .rx_buf = (unsigned long)transaction->rxBuf,
-        .tx_buf = (unsigned long)transaction->txBuf,
-        .len = transaction->count,
+    .tx_buf = (unsigned long)transaction->txBuf,
+    .len = transaction->count,
+    .speed_hz = transaction->speed_hz,
   };
 
   int r = ioctl(dev->fd, SPI_IOC_MESSAGE(1), &msg);
